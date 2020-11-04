@@ -6,5 +6,6 @@
 
 <body>
     <h1>This is a galery</h1>
+    <a href="login.php">Log in page</a>
 <body>
 </html>
