@@ -1,4 +1,31 @@
+h1 {
+    border: 0.01vw solid black;
+    display: inline;
+    padding: 0.5vw;
+    margin: 1vw;
+}
+
 form {
+    background-color: #888888;
     border: 1px solid black;
+    font-size: 3vw;
+    margin: 1vw;
+    padding: 1vw;
+}
+
+h2 {
+    margin-bottom: 0.5vw;
+}
+
+.submitButton {
+
+    border-radius: 0;
+    font-size: 4vw;
+    border: none;
+    width: 26.5vw;
+    margin-top: 1vw;
+}
+
+body {
 
 }
