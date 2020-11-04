@@ -14,7 +14,11 @@
 <body>
 
     <form name="login" method="POST">
+        <p>Enter username</p>
         <input type="text" name="user-name">
+        <br>
+
+        <p>Enter password</p>
         <input type="password" name="password">
     </form>
 </body>
