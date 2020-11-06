@@ -15,6 +15,7 @@ form {
 
 h2 {
     margin-bottom: 0.5vw;
+    font-size: 2vw;
 }
 
 .submitButton {
@@ -30,4 +31,15 @@ h2 {
     color: red;
     margin: 0;
     display: inline;
+    font-size: 2vw;
+}
+
+input {
+    height: 2vw;
+    width: 15vw;
+}
+
+input[type="button"] {
+    height: 3vw;
+    font-size: 2vw;
 }
