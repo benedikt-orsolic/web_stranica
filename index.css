@@ -1,11 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 a {
     font-size: 2vw;
-    border: 0.01vw solid black;
-    margin-top: 2vw;
-    padding: 0.5vw;
+    margin: 0;
+    padding-top: 1vw;
+    padding-bottom: 0vw;
+}
+
+a:hover {
+    background-color: #888888;
+    box-shadow: 10px 10px 10px rgba(66, 66, 66, 0.411);
 }
 
 nav {
     background-color: #888888;
-    height: 6vw;
+    height: auto;
+    padding: 0.5vw;
 }
