@@ -1,0 +1,11 @@
+a {
+    font-size: 2vw;
+    border: 0.01vw solid black;
+    margin-top: 2vw;
+    padding: 0.5vw;
+}
+
+nav {
+    background-color: #888888;
+    height: 6vw;
+}
