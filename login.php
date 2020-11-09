@@ -12,6 +12,9 @@
 
 
 <body>
+    <?php include 'html_lib/nav.html' ?>
+
+    
     <h1 id="login-button" onmouseover="switchForm(0)"  style="background-color: #888888">Log in</h1>
     <h1 id="register-button" onmouseover="switchForm(1)">Register</h1>
 
