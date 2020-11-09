@@ -1,0 +1,57 @@
+a.navLink:link {
+
+    display: block;
+    
+    width: auto;
+    
+    margin: 0;
+
+    padding-top: 1vw;
+    padding-bottom: 0vw;
+    padding-right: 0.2vw;
+
+    font-size: 2vw;
+    text-decoration: none;
+    color: black;
+}
+
+a.navLink:hover {
+    background-color: #888888;
+    box-shadow: 10px 10px 5px rgba(66, 66, 66, 0.55);
+}
+
+a.navLink:visited {
+    color: black;
+}
+
+
+.pageNav {
+    width: fit-content; 
+    height: fit-content;
+    
+    padding: 0.5vw;
+
+    position: fixed;
+    right: 0px;
+    top: 0px;
+
+    background-color: #888888;
+}
+
+nav:hover{
+    display: block;
+}
+
+#navTogle {
+    display: block;
+
+    font-size: 2vw;
+    
+    margin: 0;
+
+    padding-top: 1vw;
+    padding-bottom: 0vw;
+    padding-right: 0.2vw;
+    
+    width: auto;
+}

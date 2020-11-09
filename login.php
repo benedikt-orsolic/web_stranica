@@ -12,7 +12,7 @@
 
 
 <body>
-    <?php include 'html_lib/nav.html' ?>
+    <?php include 'html_lib/nav.php' ?>
 
     
     <h1 id="login-button" onmouseover="switchForm(0)"  style="background-color: #888888">Log in</h1>

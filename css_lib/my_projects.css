@@ -1,0 +1,16 @@
+section {
+    border: 1px solid black;
+    padding: 0.5vw;
+    margin-bottom: 0.5vw;
+}
+
+.projectNav {
+    float: left;
+    position: fixed;
+    width: 10vw;
+}
+main {
+    display: block;
+    margin-left: 10vw;
+}
+
