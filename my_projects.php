@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <?php include 'html_lib/nav.php' ?>
+    <?php include 'html_lib/nav.html' ?>
     <h1>Here will be some of my projects</h1>
 
     <nav class="projectNav">

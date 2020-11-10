@@ -4,15 +4,13 @@
 
 
 <head>
-    <meta name="viewport" content="width=device-widht, initial-scale=1"/>
-    <link rel="stylesheet" href="login.css">
-    <title> log in</title>
+    <?php include 'html_lib/global_head_elements.html' ?>
 </head>
 
 
 
 <body>
-    <?php include 'html_lib/nav.php' ?>
+    <?php include 'html_lib/nav.html' ?>
 
     
     <h1 id="login-button" onmouseover="switchForm(0)"  style="background-color: #888888">Log in</h1>
