@@ -5,6 +5,7 @@
 
 <head>
     <?php include 'html_lib/global_head_elements.html' ?>
+    <link rel="stylesheet" href="css_lib/login.css">
 </head>
 
 
