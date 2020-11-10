@@ -32,9 +32,8 @@ main {
 }
 
 .navBar:hover .navText {
-    display: block;
+    display: inline;
 }
-
 
 
 .flex-nav {
@@ -45,7 +44,7 @@ main {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 }
 
 .flex-nav li:last-child {
@@ -59,6 +58,12 @@ main {
 
 .navText {
     display: none;
+    color: darkmagenta;
+}
+
+.navIcon {
+    color: darkmagenta;
+    padding: 1rem;
 }
 
 
@@ -67,15 +72,29 @@ main {
 .navLink {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-
-
-.navIcon {
-    color: darkmagenta;
-    padding: 1rem;
-}
-
-.navIcon:hover {
+.navLink:hover .navIcon {
     color: magenta;
+}
+
+.navLink:hover .navText {
+    color: magenta;
+}
+
+a.navLink {
+    text-decoration: none;
+}
+
+a.navLink:hover {
+    text-decoration: none;
+}
+
+a.navLink:visited {
+    text-decoration: none;
+}
+
+a.navLink:active {
+    text-decoration: none;
 }
