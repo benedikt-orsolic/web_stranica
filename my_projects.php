@@ -8,18 +8,19 @@
 
 <body>
     <?php include 'html_lib/nav.html' ?>
-    <h1>Here will be some of my projects</h1>
-
-    <nav class="projectNav">
-        <ul>
-            <li>Projcet</li>
-            <li>Project</li>
-            <li>Project</li>
-        </ul>   
-
-    </nav>
-    <div class="wraper"></div>
+    
 <main>
+<h1>Here will be some of my projects</h1>
+
+<nav class="projectNav">
+    <ul>
+        <li>Projcet</li>
+        <li>Project</li>
+        <li>Project</li>
+    </ul>   
+
+</nav>
+<div class="wraper"></div>
     <section id="electronics">
         <h2>Electronics</h2>
         <article>
