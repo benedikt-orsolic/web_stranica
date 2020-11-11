@@ -77,13 +77,14 @@ a.navLink:active {
         bottom: 0;
 
         width: 100vw;
-        height: 5rem;
+        height: 2rem;
     }
 
     .flex-nav {
         
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         padding-bottom: 1rem;
         margin: 0;
@@ -91,7 +92,10 @@ a.navLink:active {
 
     .flex-nav li:last-child {
         margin-left: auto;
-        margin-right: 2rem;
+    }
+
+    .navIcon {
+        font-size: 1vw;
     }
 }
 
@@ -116,15 +120,16 @@ a.navLink:active {
         display: flex;
         flex-direction: column;
         align-items: left;
+        font-size: 3rem;
     }
 
     .flex-nav li:last-child {
         margin-top: auto;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     .navBar:hover {
-        width: 16rem;
+        width: 20rem;
     }
     
     .navBar:hover .navText {
