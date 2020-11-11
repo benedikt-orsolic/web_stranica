@@ -75,5 +75,4 @@
 
 </body>
 
-<scritp><?php include 'js_lib/my_projects.js' ?></scritp>
 </html>
