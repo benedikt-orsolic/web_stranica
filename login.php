@@ -18,21 +18,22 @@
     <h1 id="login-button" onmouseover="switchForm(0)"  style="background-color: #888888">Log in</h1>
     <h1 id="register-button" onmouseover="switchForm(1)">Register</h1>
 
-    <form id="login-form" action="login.inc.php" method="post">
+    <form id="login-form" action="assets/php_lib/login.inc.php" method="post">
         <h2>Username:</h2>
-        <input type="text" name="userName">
+        <input type="text" name="username">
         <br>
 
         <h2>Password:</h2>
         <input type="password" name="password">
         <br>
 
+        <input type="hidden" name="login" value="0"/>
         <input class="submitButton" name="submit" type="submit" value="Log in">
     </form>
 
-    <form id="register-form" name="register" method="POST" style="display: none">
+    <form id="register-form" action="assets/php_lib/login.inc.php" method="post">
         <h2>Username:</h2>
-        <input id="registerName" name="userName" type="text" oninput="validateUsername()">
+        <input id="registerName" name="userame" type="text" oninput="validateUsername()">
         <br>
 
         <h2>Password:</h2>
@@ -44,6 +45,7 @@
         <input id="registerEmail" name="email" type="email" oninput="validateEmail()">
         <br>
 
+        <input type="hidden" name="register" value="0"/>
         <input class="submitButton" name="submit" type="submit" value="Register">
 
     </form>
