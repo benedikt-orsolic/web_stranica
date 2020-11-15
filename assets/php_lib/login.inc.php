@@ -35,9 +35,15 @@ if( isset($_POST['login']) ) {
     $result = mysqli_stmt_get_result( $stmt );
     $row = mysqli_fetch_assoc( $result );
 
-    echo( $row['username'] );
-    echo( '<br>' );
-    echo( $row['password'] );
+    if( $row === NULL ) {
+        header('location: ../../login.php?err=Bad login info');
+        die();
+    }
+    
+
+    if( password_verify($password, $row['password']) ) {
+        echo( ' user valid <br>');
+    }
 
     mysqli_stmt_close( $stmt );
 

@@ -20,6 +20,8 @@ if( isset($_POST['register'])) {
     }
 
     insertUser( $userName, $password, $email, $dbConn);
+    
+    
 }
 
 function userExists( $userName, $dbConn ) {
