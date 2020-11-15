@@ -49,6 +49,8 @@
         <input class="submitButton" name="submit" type="submit" value="Register">
 
     </form>
+
+    <?php echo('<p class="invalidInput">' . $_GET['err'] . '</p>'); ?>
 </main>
 </body>
 
