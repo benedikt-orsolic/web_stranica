@@ -6,7 +6,6 @@ require_once 'dbConn.inc.php';
 
 
 if( !isset($_POST['submit']) ) {
-    echo('not submited');
     header('location: ../../login.php');
     die();
 }
@@ -40,12 +39,7 @@ if( isset($_POST['login']) ) {
     echo( '<br>' );
     echo( $row['password'] );
 
-
-}
-
+    mysqli_stmt_close( $stmt );
 
 
-
-if( isset($_POST['register']) ) {
-    echo( ' hey register ');
 }

@@ -31,9 +31,9 @@
         <input class="submitButton" name="submit" type="submit" value="Log in">
     </form>
 
-    <form id="register-form"  action="assets/php_lib/login.inc.php" method="post" style="display: none;">
+    <form id="register-form"  action="assets/php_lib/register.inc.php" method="post" style="display: none;">
         <h2>Username:</h2>
-        <input id="registerName" name="userame" type="text" oninput="validateUsername()">
+        <input id="registerName" name="userName" type="text" oninput="validateUsername()">
         <br>
 
         <h2>Password:</h2>
