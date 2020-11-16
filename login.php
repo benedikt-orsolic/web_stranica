@@ -38,7 +38,7 @@
         <br>
 
         <h2>Password:</h2>
-        <input id="registerPassword" name="password" type="password" oninput="validatePassword()">
+        <input id="registerPassword" name="password" type="text" onkeyup="validatePassword()">
         <p id="invalidPassword" class="invalidInput"></p>
         <br>
 

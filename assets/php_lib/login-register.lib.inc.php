@@ -43,4 +43,17 @@ function insertUser($userName, $password, $email, $dbConn) {
 
     mysqli_stmt_bind_param( $stmt, 'sss', $email, $userName, $password);
     mysqli_stmt_execute( $stmt );
+    mysqli_stmt_close( $stmt );
+}
+
+/* Return NULL if no errors or warnings */
+function passwordValid( $password ) {
+
+    //Search for all invalid passwords
+    $pattern = '/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/';
+    $minLen = 12;
+    
+    if( strlen($password) < $minLen == 1 ) return 'Password too short';//return 'Password too short';
+    if( preg_match( $pattern, $password) ) return 'Password needs 1 lowercase letter, 1 uppercase, 1 number and 1 other character';
+    return NULL;
 }
