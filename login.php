@@ -33,7 +33,8 @@
 
     <form id="register-form"  action="assets/php_lib/register.inc.php" method="post" style="display: none;">
         <h2>Username:</h2>
-        <input id="registerName" name="userName" type="text" oninput="validateUsername()">
+        <input id="registerName" name="userName" type="text" onkeyup="validateUsername()">
+        <p id="invalidUserName" class="invalidInput"></p>
         <br>
 
         <h2>Password:</h2>
@@ -50,7 +51,7 @@
 
     </form>
 
-    <?php echo('<p class="invalidInput">' . $_GET['err'] . '</p>'); ?>
+    <?php if( isset($_GET['err'])) echo('<p class="invalidInput">' . $_GET['err'] . '</p>'); ?>
 </main>
 </body>
 
@@ -87,6 +88,18 @@
 
     function validateUsername() {
         //TODO
+        var xhttp = new XMLHttpRequest();
+        
+        xhttp.onreadystatechange = function() {
+            console.log('hello');
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("invalidUserName").innerHTML = this.responseText;
+            }
+        };
+
+        xhttp.open('POST', 'assets/php_lib/register.inc.php', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send('submit=1&verifyUserName=1&userName=' + document.getElementById('registerName').value );
     }
 
     function validatePassword() {

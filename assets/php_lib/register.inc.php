@@ -1,6 +1,8 @@
 <?php
 
-include_once 'dbConn.inc.php';
+require_once 'dbConn.inc.php';
+require_once 'login-register.lib.inc.php';
+
 
 if( !isset($_POST['submit']) ) {
     header('location: ../../login.php');
@@ -9,6 +11,7 @@ if( !isset($_POST['submit']) ) {
 
 //TODO
 //Input validation
+
 
 if( isset($_POST['register'])) {
     $userName = $_POST['userName'];
@@ -20,45 +23,29 @@ if( isset($_POST['register'])) {
     }
 
     insertUser( $userName, $password, $email, $dbConn);
-    
-    
+    exit();
 }
 
-function userExists( $userName, $dbConn ) {
 
-    $sql = 'SELECT * FROM users WHERE username = ?;';
-    $stmt = mysqli_stmt_init( $dbConn );
+if( isset($_POST['verifyUserName']) ){
+    $userName = $_POST['userName'];
 
-    if( !mysqli_stmt_prepare($stmt, $sql) ) {
-        //Prep fail
-        //TODO
-        echo(' stmt prep fail ');
+    if( userExists( $userName, $dbConn ) !== NULL ) {
+        echo( 'Username  in use');
     }
-
-    mysqli_stmt_bind_param($stmt, 's', $userName);
-    mysqli_stmt_execute( $stmt );
-
-    $result = mysqli_stmt_get_result( $stmt );
-    $row = mysqli_fetch_assoc( $result );
-
-    mysqli_stmt_close( $stmt );
-    
-    return $row;
+    exit();
 }
 
 
-function insertUser($userName, $password, $email, $dbConn) {
 
-    $sql = "INSERT INTO users (email, username, password) VALUES (?, ?, ?);";
-    $stmt = mysqli_stmt_init( $dbConn );
 
-    if( !mysqli_stmt_prepare( $stmt, $sql )) {
-        echo('prep fail');
-        die();
-    }
 
-    $password = password_hash( $password, PASSWORD_DEFAULT );
 
-    mysqli_stmt_bind_param( $stmt, 'sss', $email, $userName, $password);
-    mysqli_stmt_execute( $stmt );
-}
+
+
+
+
+
+
+
+
