@@ -22,12 +22,12 @@ function switchForm(which) {
             registerButton.backgroundColor = '#888888';
             break;
     }
-
-    
 }
 
+
+
 function validateUsername() {
-    //TODO
+    
     var xhttp = new XMLHttpRequest();
     
     xhttp.onreadystatechange = function() {
@@ -41,6 +41,8 @@ function validateUsername() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('submit=1&verifyUserName=1&userName=' + document.getElementById('registerName').value );
 }
+
+
 
 function validatePassword() {
 
@@ -58,18 +60,17 @@ function validatePassword() {
     var pass = document.getElementById('registerPassword').value;
 
 
+
     //Reset invalidPassword <p> element
     document.getElementById('invalidPassword').innerHTML = '';
     document.getElementById('invalidPassword').style.color = 'red';
     
-
     //Skip other checks if password is too short
     if( pass.length < minLength ) {
         document.getElementById('invalidPassword').innerHTML = 
         'Password too short';
         return;
     }
-    
 
     //Count all character groups
     for( var i = 0; i < pass.length; i++ ) {
@@ -78,7 +79,6 @@ function validatePassword() {
         else if( pass.charCodeAt(i) >= '0'.charCodeAt(0) && pass.charCodeAt(i) <= '9'.charCodeAt(0)) num++;
         else other++;
     }
-    
     
     // Print warnings
     //else if so we don't clutter invalid pass <p> element
@@ -96,16 +96,15 @@ function validatePassword() {
         'You need ' + (minOther - other) + ' other characters.'
     } else {
 
-
         // If all checks out
         document.getElementById('invalidPassword').innerHTML = 
         'Password ok!';
         document.getElementById('invalidPassword').style.color = 
         'green';
     }
-
 }
 
 function validateEmail() {
-
+    //Browser does it on its own
+    //Change styleing only
 }
