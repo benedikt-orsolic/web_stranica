@@ -20,7 +20,9 @@
         </li>
         <li>  
             <?php 
-                session_start();
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
                 if(isset($_SESSION['uuid'])) {
                     echo('
                     <a href="assets/php_lib/logout.php"  class="navLink">
