@@ -7,7 +7,7 @@
 
 <body>
 
-    <?php include 'html_lib/nav.html'; ?>
+    <?php include 'html_lib/nav.php'; ?>
 
     <main>
         <h1>My blog</h1>

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +11,7 @@
 </head>
 
 <body>
-    <?php include 'html_lib/nav.html' ?>
+    <?php include 'html_lib/nav.php' ?>
     
 <main>
 <h1>Here will be some of my projects</h1>

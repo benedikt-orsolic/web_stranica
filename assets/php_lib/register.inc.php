@@ -10,7 +10,7 @@ if( !isset($_POST['submit']) ) {
 }
 
 //TODO
-//Input validation
+//email verification
 
 
 if( isset($_POST['register'])) {

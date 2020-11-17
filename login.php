@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if( isset($_SESSION['uuid'])) {
+        header('location: index.php');
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +18,7 @@
 
 
 <body>
-    <?php include 'html_lib/nav.html' ?>
+    <?php include 'html_lib/nav.php' ?>
 
 <main>
     
