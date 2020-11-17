@@ -1,6 +1,6 @@
 <?php
 
-
+include_once 'constants.inc.php';
 
 
 
@@ -12,9 +12,7 @@ function userExists( $userName, $dbConn ) {
     $stmt = mysqli_stmt_init( $dbConn );
 
     if( !mysqli_stmt_prepare($stmt, $sql) ) {
-        //Prep fail
-        //TODO
-        echo(' stmt prep fail ');
+        file_put_contents ( 'DB_ERR_LOG' , 'login-register.lib.inc.php - mysqli_stmt_prepare() fail'."\r\n " , FILE_APPEND | LOCK_EX);
     }
 
     mysqli_stmt_bind_param($stmt, 's', $userName);
@@ -22,7 +20,7 @@ function userExists( $userName, $dbConn ) {
 
     $result = mysqli_stmt_get_result( $stmt );
     $row = mysqli_fetch_assoc( $result );
-
+    
     mysqli_stmt_close( $stmt );
     
     return $row;

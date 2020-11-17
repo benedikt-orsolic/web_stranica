@@ -16,16 +16,14 @@ if( !isset($_POST['submit']) ) {
 
 if( isset($_POST['login']) ) {
 
-    $username = $_POST['username'];
+    $userName = $_POST['username'];
     $password = $_POST['password'];
 
-    $row = userExists($userName, $dbConn);
-
-    if( $row === NULL ) {
-        header('location: ../../login.php?err=Bad login info');
-        die();
+    $user = userExists($userName, $dbConn);
+    if( $user === NULL || !password_verify($password, $user['password']) ) {
+        header( 'location: ../../login.php?err=Bad login info');
+    } else {
+        header( 'location: ../../login.php?err=Good login info');
     }
-    
-
     
 }

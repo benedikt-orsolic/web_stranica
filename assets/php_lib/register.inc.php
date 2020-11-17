@@ -22,9 +22,9 @@ if( isset($_POST['register'])) {
         header( 'location: ../../login.php?err=User alredy exists');
     }
 
-    $passwordCheckResult = password_verify($password, $row['password']);
-    if( $passwordCheckResult != true) {
-        header('location: ../../login.php?err='.$passwordCheckResult );
+    $passwordCheckResult = passwordValid( $password );
+    if( !$passwordCheckResult ) {
+        header( 'location: ../../login.php?err='.$passwordCheckResult );
     }
 
     insertUser( $userName, $password, $email, $dbConn);
