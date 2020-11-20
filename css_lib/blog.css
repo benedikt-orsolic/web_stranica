@@ -3,6 +3,12 @@
     padding: 1rem;
 }
 
-.postTitle {
+#blogPostTitle {
+    width: 100%;
+    margin-bottom: 1vh;
+}
 
+#blogPostBody {
+    width: 100%;
+    height: 50vh;
 }

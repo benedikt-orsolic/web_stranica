@@ -15,12 +15,14 @@
     <?php include 'html_lib/nav.php'; ?>
 
     <main>
+        
         <h1>My blog</h1>
-
+<?php if( isset($_SESSION['uuid']) ) include 'assets/html_lib/blog_post_form.php'; ?>
+        
         <article class="blogPost">
             <h2 class="postTiele">Post title</h2>
             <p class="postText">Some text</p>
-        </articl>
+        </article>
     </main>
 </body> 
 </html>
