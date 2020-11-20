@@ -9,7 +9,7 @@
         <label>Add a nice image to represent your post: </label><br>
         <input type='file' name='postImage'>
     </div> 
-    <input type='button' name='submit' value='Post' style="float: right;"></button>
+    <input name="submit" type="submit" value='Post' style="float: right;"></button>
 
 
 </form>

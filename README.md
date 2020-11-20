@@ -7,6 +7,8 @@ TODO
 
     Client side email validation
 
+    Sanitise user input
+
 
 # This project uses resources from
     https://fontawesome.com/
