@@ -15,7 +15,3 @@ $postImage = $_POST['postImage'];
 //Input sanitise
 
 uploadPost( $title, $body, $postImage, $dbConn );
-
-echo( $title );
-echo( $body );
-echo( $postImage );
