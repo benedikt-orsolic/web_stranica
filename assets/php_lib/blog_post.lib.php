@@ -6,7 +6,7 @@ function uploadPost( $title, $body, $postImage, $dbConn ) {
     $stmt = mysqli_stmt_init( $dbConn );
 
     if( !mysqli_stmt_prepare($stmt, $sql) ) {
-        file_put_contents ( '../../'.'DB_ERR_LOG' , 'login-register.lib.inc.php - mysqli_stmt_prepare() fail'."\r\n ". 
+        file_put_contents ( '../../'.'DB_ERR_LOG' , 'blog_post.lib.inc.php - mysqli_stmt_prepare() fail'."\r\n ". 
                                                      mysqli_error($dbConn)."\r\n" , FILE_APPEND | LOCK_EX);
     }
 
