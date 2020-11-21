@@ -1,0 +1,41 @@
+<?php
+
+require_once 'dbConn.inc.php';
+include_once 'constants.inc.php';
+
+if( !isset($_POST['submit']) ) {
+    die();
+}
+
+$upid = $_POST['upid'];
+
+
+if( $upid == -1 ) {
+    $sql = "SELECT * FROM blog_posts ORDER BY upid DESC;";
+} else {
+    $sql = "SELECT * FROM blog_posts WHERE upid = ?;";
+}
+
+$stmt = mysqli_stmt_init( $dbConn );
+
+if( !mysqli_stmt_prepare( $stmt, $sql )) {
+    file_put_contents ( '../../db_error.log.txt' , 'assets/php_lib/get_blog_posts.php no function'.mysqli_error($dbConn)."\r\n ", FILE_APPEND | LOCK_EX);
+    die();
+}
+
+if( $upid != -1 ) {
+    mysqli_stmt_bind_param( $stmt, 'i', $upid);
+}
+mysqli_stmt_execute( $stmt );
+$result = mysqli_stmt_get_result( $stmt );
+
+while($row = mysqli_fetch_assoc($result)){
+    
+    echo( '<article id="' .$row['upid']. '" class="blogPost">');
+    echo( '<h2 class="postTiele">'.$row['title'].'</h2>' );
+    echo( '<p class="postText">'.$row['text'].'</p>' );
+    echo( '</article>'); 
+}
+
+mysqli_stmt_close( $stmt );
+

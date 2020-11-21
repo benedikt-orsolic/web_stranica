@@ -14,15 +14,13 @@
 
     <?php include 'html_lib/nav.php'; ?>
 
-    <main>
+    <main id='main'>
         
         <h1>My blog</h1>
 <?php if( isset($_SESSION['uuid']) ) include 'assets/html_lib/blog_post_form.php'; ?>
-        
-        <article class="blogPost">
-            <h2 class="postTiele">Post title</h2>
-            <p class="postText">Some text</p>
-        </article>
+        <button onclick='getNextToLastPost( -1 )'>Get Posts</button>
     </main>
 </body> 
+
+<script src='assets/js_lib/blog.js'></script>
 </html>
