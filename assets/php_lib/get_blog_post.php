@@ -44,7 +44,7 @@ if( $upid != -1 ) {
 
 while($row = mysqli_fetch_assoc($result)){
     
-    echo( '<article id="' .$row['upid']. '" class="blogPost">');
+    echo( '<article id="blogPost=' .$row['upid']. '" class="blogPost">');
     echo( '<h2 class="postTiele">'.$row['title'].'</h2>' );
     echo( '<p class="postText">'.$row['text'].'</p>' );
     echo( '</article>'); 

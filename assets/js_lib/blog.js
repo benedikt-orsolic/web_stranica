@@ -14,3 +14,14 @@ function getNextToLastPost( lastPostUPID ) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('submit=1&getBlogPost=1&upid=' + lastPostUPID );
 }
+
+function getUpidOfLastPost() {
+    var lastChild = document.getElementById("main").lastChild.getAttribute;
+    var lastChildId = -1;
+
+    if( lastChild != null) {
+        lastChildId = document.getElementById("main").lastChild.getAttribute("id").substring(9);
+    }; 
+
+    return lastChildId;
+}
