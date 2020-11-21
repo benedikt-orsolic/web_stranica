@@ -15,3 +15,4 @@ $postImage = $_POST['postImage'];
 //Input sanitise
 
 uploadPost( $title, $body, $postImage, $dbConn );
+header('location: ../../blog.php');

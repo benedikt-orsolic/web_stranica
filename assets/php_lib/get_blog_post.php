@@ -11,7 +11,7 @@ if( !isset($_POST['submit']) ) {
 $upid = $_POST['upid'];
 
 if( $upid == -1 ) {
-    $sql = "SELECT * FROM blog_posts ORDER BY upid DESC;";
+    $sql = "SELECT * FROM blog_posts ORDER BY upid DESC LIMIT 5;";
 } else {
     $sql = "SELECT * FROM blog_posts WHERE upid = ?;";
 }
