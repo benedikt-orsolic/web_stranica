@@ -16,12 +16,9 @@ function getNextToLastPost( lastPostUPID ) {
 }
 
 function getUpidOfLastPost() {
-    var lastChild = document.getElementById("main").lastChild.getAttribute;
+    var lastChild = document.getElementById("main").lastChild.getAttribute("id");
     var lastChildId = -1;
 
-    if( lastChild != null) {
-        lastChildId = document.getElementById("main").lastChild.getAttribute("id").substring(9);
-    }; 
-
+    lastChildId = lastChild.substring(9);
     return lastChildId;
 }
