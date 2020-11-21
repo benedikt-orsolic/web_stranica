@@ -7,8 +7,8 @@ if( !isset($_POST['submit']) ) {
     die();
 }
 
-$upid = $_POST['upid'];
 
+$upid = $_POST['upid'];
 
 if( $upid == -1 ) {
     $sql = "SELECT * FROM blog_posts ORDER BY upid DESC;";
@@ -17,6 +17,7 @@ if( $upid == -1 ) {
 }
 
 $stmt = mysqli_stmt_init( $dbConn );
+$result = NULL;
 
 if( !mysqli_stmt_prepare( $stmt, $sql )) {
     file_put_contents ( '../../db_error.log.txt' , 'assets/php_lib/get_blog_posts.php no function'.mysqli_error($dbConn)."\r\n ", FILE_APPEND | LOCK_EX);
@@ -24,10 +25,22 @@ if( !mysqli_stmt_prepare( $stmt, $sql )) {
 }
 
 if( $upid != -1 ) {
-    mysqli_stmt_bind_param( $stmt, 'i', $upid);
+    do{
+        $upid--;
+        if( $upid < 0) {
+            file_put_contents ('../../logs/error.log.txt' , date('Y-m-d H:i:s').' - '.'$upid < 0'."\r\n" , FILE_APPEND | LOCK_EX);
+            die();
+        }
+        mysqli_stmt_bind_param( $stmt, 'i', $upid);
+        
+        mysqli_stmt_execute( $stmt );
+        $result = mysqli_stmt_get_result( $stmt );
+
+    } while ( mysqli_num_rows($result) == 0 );
+} else {
+    mysqli_stmt_execute( $stmt );
+    $result = mysqli_stmt_get_result( $stmt );
 }
-mysqli_stmt_execute( $stmt );
-$result = mysqli_stmt_get_result( $stmt );
 
 while($row = mysqli_fetch_assoc($result)){
     
