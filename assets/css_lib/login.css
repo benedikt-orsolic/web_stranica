@@ -34,11 +34,6 @@ h2 {
     font-size: 2vw;
 }
 
-input {
-    height: 2vw;
-    width: 15vw;
-}
-
 input[type="button"] {
     height: 3vw;
     font-size: 2vw;
