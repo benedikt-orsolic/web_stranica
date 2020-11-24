@@ -42,8 +42,6 @@ function validateUsername() {
     xhttp.send('submit=1&verifyUserName=1&userName=' + document.getElementById('registerName').value );
 }
 
-
-
 function validatePassword() {
 
     var xhttp = new XMLHttpRequest();
@@ -56,10 +54,28 @@ function validatePassword() {
         }
     };
 
-    console.log('hello2')
     xhttp.open('POST', 'assets/php_lib/register.inc.php', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('submit=1&verifyPassword=1&password=' + document.getElementById('registerPassword').value );
+}
+
+function validatePasswordRepeat() {
+    var pwd = document.getElementById('registerPassword').value;
+    var pwdRPT = document.getElementById('registerPasswordRepeat').value;
+
+    var xhttp = new XMLHttpRequest();
+    
+    
+    xhttp.onreadystatechange = function() {
+        
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('invalidPasswordRepeat').innerHTML = this.responseText;
+        }
+    };
+
+    xhttp.open('POST', 'assets/php_lib/register.inc.php', true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('submit=1&validatePasswordRepeat=1&password=' + pwd + '&passwordRepeat=' + pwdRPT );
 }
 
 function validateEmail() {

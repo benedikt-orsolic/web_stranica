@@ -48,6 +48,19 @@ if( isset($_POST['verifyPassword']) ) {
     else echo( 'Ok' );
 }
 
+if( isset($_POST['validatePasswordRepeat']) ) {
+
+    $password = $_POST['password'];
+    $passwordRpt = $_POST['passwordRepeat'];
+
+    if( strcmp( $password, $passwordRpt ) == 1) {
+        echo('Password OK');
+        die();
+    } else {
+        echo('Passwords don\'t match');
+        die();
+    }
+}
 
 
 

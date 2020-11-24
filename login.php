@@ -41,8 +41,13 @@
             <br>
 
             <h2>Password:</h2>
-            <input id="registerPassword" name="password" type="text" onkeyup="validatePassword()">
+            <input id="registerPassword" name="password" type="password" onkeyup="validatePassword()">
             <p id="invalidPassword" class="invalidInput"></p>
+            <br>
+
+            <h2>Password repeat:</h2>
+            <input id="registerPasswordRepeat" name="passwordRepeat" type="password" onkeyup="validatePasswordRepeat()">
+            <p id="invalidPasswordRepeat" class="invalidInput"></p>
             <br>
 
             <h2>E-mail:</h2>
