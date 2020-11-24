@@ -1,6 +1,2 @@
-logs/debug.log.txt
-DB_ERR_LOG
-logs/debug.log
-logs/error.log.txt
-.gitignore
-db_error.log.txt
+logs
+.VSCodeCounter
