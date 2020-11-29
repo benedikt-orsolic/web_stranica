@@ -18,8 +18,8 @@
 <body>
     <?php include 'html_lib/nav.php' ?>
     <main>
-        <h1 id="login-button" onmouseover="switchForm(0)"  style="background-color: #888888">Log in</h1>
-        <h1 id="register-button" onmouseover="switchForm(1)">Register</h1>
+        <h1 id="login-button" style="background-color: #888888">Log in</h1>
+        <h1 id="register-button">Register</h1>
 
         <form id="login-form" action="assets/php_lib/login.inc.php" method="post">
             <h2>Username:</h2>
@@ -36,22 +36,22 @@
 
         <form id="register-form"  action="assets/php_lib/register.inc.php" method="post" style="display: none;">
             <h2>Username:</h2>
-            <input id="registerName" name="userName" type="text" onkeyup="validateUsername()">
+            <input id="registerName" name="userName" type="text">
             <p id="invalidUserName" class="invalidInput"></p>
             <br>
 
             <h2>Password:</h2>
-            <input id="registerPassword" name="password" type="password" onkeyup="validatePassword()">
+            <input id="registerPassword" name="password" type="password">
             <p id="invalidPassword" class="invalidInput"></p>
             <br>
 
             <h2>Password repeat:</h2>
-            <input id="registerPasswordRepeat" name="passwordRepeat" type="password" onkeyup="validatePasswordRepeat()">
+            <input id="registerPasswordRepeat" name="passwordRepeat" type="password">
             <p id="invalidPasswordRepeat" class="invalidInput"></p>
             <br>
 
             <h2>E-mail:</h2>
-            <input id="registerEmail" name="email" type="email" oninput="validateEmail()">
+            <input id="registerEmail" name="email" type="email">
             <br>
 
             <input type="hidden" name="register" value="0"/>

@@ -1,3 +1,26 @@
+if (document.addEventListener) {                // For all major browsers, except IE 8 and earlier
+
+
+    document.getElementById('login-button').addEventListener('mouseover', function () {
+        switchForm(0);
+    });
+    document.getElementById('register-button').addEventListener('mouseover', function(){
+        switchForm(1)
+    });
+
+    
+    document.getElementById('registerName').addEventListener('keyup', function() {
+        validateUsername();
+    });
+    document.getElementById('registerPassword').addEventListener('keyup', function() {
+        validatePassword();
+    });
+    document.getElementById('registerPasswordRepeat').addEventListener('keyup', function() {
+        validatePasswordRepeat();
+    });
+  }
+
+
 function switchForm(which) {
 
     var login = document.getElementById('login-form').style;
@@ -23,8 +46,6 @@ function switchForm(which) {
             break;
     }
 }
-
-
 
 function validateUsername() {
     
