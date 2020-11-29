@@ -1,4 +1,8 @@
-
+if(document.addEventListener) {
+    window.addEventListener('scroll', function(){
+        loadMoreBlogPosts();
+    });
+}
 
 function getNextToLastPost( lastPostUPID ) {
     var xhttp = new XMLHttpRequest();
@@ -26,4 +30,15 @@ function getUpidOfLastPost() {
         if( !error )var lastChildId = document.getElementById("main").lastChild.getAttribute("id").substring(9);
     }
     return String(lastChildId);
+}
+
+function loadMoreBlogPosts() {
+    
+    var scrollPos = window.scrollY;
+    var height = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+    console.log(scrollPos + ' - ' + height)
+    if( scrollPos >= 0.9 * height ){
+        var lastUpid = getUpidOfLastPost();
+        getNextToLastPost( lastUpid );
+    }
 }
