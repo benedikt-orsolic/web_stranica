@@ -18,7 +18,6 @@
         
         <h1>My blog</h1>
 <?php if( isset($_SESSION['uuid']) ) include 'assets/html_lib/blog_post_form.php'; ?>
-        <button onclick='getNextToLastPost( getUpidOfLastPost() )'>Get Posts</button>
     </main>
 </body> 
 

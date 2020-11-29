@@ -2,6 +2,9 @@ if(document.addEventListener) {
     window.addEventListener('scroll', function(){
         loadMoreBlogPosts();
     });
+    window.addEventListener('load', function(){
+        initialPostLoad();
+    })
 }
 
 function getNextToLastPost( lastPostUPID ) {
@@ -41,4 +44,8 @@ function loadMoreBlogPosts() {
         var lastUpid = getUpidOfLastPost();
         getNextToLastPost( lastUpid );
     }
+}
+
+function initialPostLoad() {
+    getNextToLastPost( getUpidOfLastPost() );
 }
