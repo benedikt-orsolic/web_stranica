@@ -59,7 +59,7 @@ mysqli_stmt_close( $stmt );
 
 
 function getWithMarkDownToHTML( $str ) {
-    return $str;
+    
     $len = strlen($str);
     $result = "";
     $lastPos = 0;
