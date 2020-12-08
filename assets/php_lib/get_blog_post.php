@@ -46,9 +46,31 @@ while($row = mysqli_fetch_assoc($result)){
     
     echo( '<article id="blogPost=' .$row['upid']. '" class="blogPost">');
     echo( '<h2 class="postTiele">'.$row['title'].'</h2>' );
-    echo( '<p class="postText">'.$row['text'].'</p>' );
+    echo( '<p class="postText">'.getWithMarkDownToHTML( $row['text'] ) .'</p>' );
     echo( '</article>'); 
 }
 
 mysqli_stmt_close( $stmt );
 
+
+
+
+
+
+
+function getWithMarkDownToHTML( $str ) {
+    return $str;
+    $len = strlen($str);
+    $result = "";
+    $lastPos = 0;
+    
+    do{
+        $i = strpos($str, "#");
+        $j = strpos($str, "#", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h3>" . substr($str, $i+1, $j - $i - 1) . "</h3>" . substr($str, $j+1, $len);
+        else break;
+    } while(1);
+
+    return $str;
+}
