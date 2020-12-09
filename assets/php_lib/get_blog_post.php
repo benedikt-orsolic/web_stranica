@@ -64,7 +64,7 @@ mysqli_stmt_close( $stmt );
     #heading#
     --- horizontal rule
     new lines separate paragraphs
-
+    [color:#ffffff]{text} or [color:blue]
 */
 function getWithMarkDownToHTML( $str ) {
 
@@ -78,6 +78,30 @@ function getWithMarkDownToHTML( $str ) {
         $j = strpos($str, "#", $i + 1);
 
         if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h3>" . substr($str, $i+1, $j - $i - 1) . "</h3>" . substr($str, $j+1, $len);
+        else break;
+    } while(1);
+
+    //Color
+    do{
+        $i = strpos($str, "[color:");
+        $j = strpos($str, "]", $i + 1);
+
+        $color = "";
+        if( $i !== false && $j !== false ) $color = substr($str, $i+7, $j - $i - 7);
+        else break;
+        
+        $textOpen = strpos($str, "{");
+        $textClose = strpos($str, "}");
+
+        if( $textOpen !== false && $textClose !== false && $i !== false && $j !== false ) {
+            $str = 
+            substr($str, 0, $i) . 
+            "<span style='color: " . 
+            $color . "'>" . 
+            substr($str, $textOpen+1, $textClose - $textOpen - 1) . 
+            "</span>" . 
+            substr($str, $textClose+1, $len);
+        }
         else break;
     } while(1);
 
