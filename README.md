@@ -1,6 +1,6 @@
 # Web Stranica
 
-TODO
+## TODO
 
 * Client side email validation
 * Sanitise user input
@@ -9,5 +9,5 @@ TODO
 * Add some margin between blogposts
 
 
-# This project uses resources from
+## This project uses resources from
     https://fontawesome.com/
