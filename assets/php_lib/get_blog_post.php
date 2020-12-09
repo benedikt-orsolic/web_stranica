@@ -57,13 +57,22 @@ mysqli_stmt_close( $stmt );
 
 
 
+/*
+    **Bold text**
+     *Italic   *
+    * **Bold italic** *
+    #heading#
+    --- horizontal rule
+    new lines separate paragraphs
 
+*/
 function getWithMarkDownToHTML( $str ) {
 
     $len = strlen($str);
     $result = "";
     $lastPos = 0;
     
+    //Highest heading
     do{
         $i = strpos($str, "#");
         $j = strpos($str, "#", $i + 1);
@@ -72,6 +81,35 @@ function getWithMarkDownToHTML( $str ) {
         else break;
     } while(1);
 
+
+    //Bold text
+    do{
+        $i = strpos($str, "**");
+        $j = strpos($str, "**", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<strong>" . substr($str, $i+2, $j - $i - 2) . "</strong>" . substr($str, $j+2, $len);
+        else break;
+    } while(1);
+
+    //Italic
+    do{
+        $i = strpos($str, "*");
+        $j = strpos($str, "*", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<em>" . substr($str, $i+1, $j - $i - 1) . "</em>" . substr($str, $j+1, $len);
+        else break;
+    } while(1);
+
+    //Horizontal rule
+    do{
+        $i = strpos($str, "---");
+
+        if( $i !== false ) $str = substr($str, 0, $i) . "<hr>" . substr($str, $i+3, $len);
+        else break;
+    } while(1);
+
+
+    //Paragraphs
     do{
         $i = strpos($str, "\n");
         $j = strpos($str, "\n", $i + 1);
