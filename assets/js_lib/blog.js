@@ -39,8 +39,8 @@ function loadMoreBlogPosts() {
     
     var scrollPos = window.scrollY;
     var height = (document.height !== undefined) ? document.height : document.body.offsetHeight;
-    console.log(scrollPos + ' - ' + height)
-    if( scrollPos >= 0.9 * height ){
+    
+    if( scrollPos + window.innerHeight >= 0.9 * height ){
         var lastUpid = getUpidOfLastPost();
         getNextToLastPost( lastUpid );
     }
