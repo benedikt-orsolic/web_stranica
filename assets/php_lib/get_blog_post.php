@@ -46,7 +46,7 @@ while($row = mysqli_fetch_assoc($result)){
     
     echo( '<article id="blogPost=' .$row['upid']. '" class="blogPost">');
     echo( '<h2 class="postTiele">'.$row['title'].'</h2>' );
-    echo( '<p class="postText">'.getWithMarkDownToHTML( $row['text'] ) .'</p>' );
+    echo( '<section class="postText">'.getWithMarkDownToHTML( $row['text'] ).'</section>' );
     echo( '</article>'); 
 }
 
@@ -72,10 +72,28 @@ function getWithMarkDownToHTML( $str ) {
     $result = "";
     $lastPos = 0;
     
+    //Lowest heading
+    do{
+        $i = strpos($str, "###");
+        $j = strpos($str, "\n", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h5>" . substr($str, $i+3, $j - $i - 1) . "</h5>" . substr($str, $j+1, $len);
+        else break;
+    } while(1);
+
+    //Middle heading
+    do{
+        $i = strpos($str, "##");
+        $j = strpos($str, "\n", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h4>" . substr($str, $i+2, $j - $i - 1) . "</h4>" . substr($str, $j+1, $len);
+        else break;
+    } while(1);
+
     //Highest heading
     do{
         $i = strpos($str, "#");
-        $j = strpos($str, "#", $i + 1);
+        $j = strpos($str, "\n", $i + 1);
 
         if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h3>" . substr($str, $i+1, $j - $i - 1) . "</h3>" . substr($str, $j+1, $len);
         else break;
@@ -105,6 +123,14 @@ function getWithMarkDownToHTML( $str ) {
         else break;
     } while(1);
 
+     //Bold and italic text
+     do{
+        $i = strpos($str, "***");
+        $j = strpos($str, "***", $i + 1);
+
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<strong><em>" . substr($str, $i+2, $j - $i - 2) . "</em></strong>" . substr($str, $j+2, $len);
+        else break;
+    } while(1);
 
     //Bold text
     do{
@@ -135,8 +161,8 @@ function getWithMarkDownToHTML( $str ) {
 
     //Paragraphs
     do{
-        $i = strpos($str, "\n");
-        $j = strpos($str, "\n", $i + 1);
+        $i = strpos($str, "\n\n");
+        $j = strpos($str, "\n\n", $i + 1);
 
         if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<p>" . substr($str, $i+1, $j - $i - 1) . "</p>" . substr($str, $j+1, $len);
         else break;
