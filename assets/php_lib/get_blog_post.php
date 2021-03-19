@@ -76,8 +76,9 @@ function getWithMarkDownToHTML( $str ) {
     do{
         $i = strpos($str, "###");
         $j = strpos($str, "\n", $i + 1);
-
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h5>" . substr($str, $i+3, $j - $i - 1) . "</h5>" . substr($str, $j+1, $len);
+        
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h5>" . substr($str, $i+3, $j - $i - 1) . "</h5>" . substr($str, $j-1, $len);
         else break;
     } while(1);
 
@@ -85,8 +86,8 @@ function getWithMarkDownToHTML( $str ) {
     do{
         $i = strpos($str, "##");
         $j = strpos($str, "\n", $i + 1);
-
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h4>" . substr($str, $i+2, $j - $i - 1) . "</h4>" . substr($str, $j+1, $len);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h4>" . substr($str, $i+2, $j - $i - 1) . "</h4>" . substr($str, $j-1, $len);
         else break;
     } while(1);
 
@@ -94,8 +95,8 @@ function getWithMarkDownToHTML( $str ) {
     do{
         $i = strpos($str, "#");
         $j = strpos($str, "\n", $i + 1);
-
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h3>" . substr($str, $i+1, $j - $i - 1) . "</h3>" . substr($str, $j+1, $len);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<h3>" . substr($str, $i+1, $j - $i - 1) . "</h3>" . substr($str, $j-1, $len);
         else break;
     } while(1);
 
@@ -161,10 +162,12 @@ function getWithMarkDownToHTML( $str ) {
 
     //Paragraphs
     do{
-        $i = strpos($str, "\n\n");
-        $j = strpos($str, "\n\n", $i + 1);
+        $i = strpos($str, "\r\n\r\n");
+        $j = strpos($str, "\r\n\r\n", $i + 4);
+        file_put_contents ( "../../logs/debug.log" , "i=" . $i . "    j=" . $j . "\n", FILE_APPEND | LOCK_EX);
 
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<p>" . substr($str, $i+1, $j - $i - 1) . "</p>" . substr($str, $j+1, $len);
+        // Leave trailing "\r\n\r\n" so it can be picked up for next paragraph, potentionally picks up a heading in it, best i got for now
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<p>" . substr($str, $i+4, $j - $i - 1) . "</p>" . substr($str, $j-1, $len);
         else break;
     } while(1);
 
