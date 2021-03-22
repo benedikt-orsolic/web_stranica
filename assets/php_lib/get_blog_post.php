@@ -152,10 +152,11 @@ function getWithMarkDownToHTML( $str ) {
     } while(1);
 
     //Horizontal rule
+    // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
     do{
         $i = strpos($str, "---");
 
-        if( $i !== false ) $str = substr($str, 0, $i) . "<hr>" . substr($str, $i+3, $len);
+        if( $i !== false ) $str = substr($str, 0, $i) . "\r\n\r\n<hr>\r\n\r\n" . substr($str, $i+3, $len);
         else break;
     } while(1);
 
@@ -164,10 +165,15 @@ function getWithMarkDownToHTML( $str ) {
     do{
         $i = strpos($str, "\r\n\r\n");
         $j = strpos($str, "\r\n\r\n", $i + 4);
-        file_put_contents ( "../../logs/debug.log" , "i=" . $i . "    j=" . $j . "\n", FILE_APPEND | LOCK_EX);
 
+        // Escape <hr> as it can't be inside <p>
+        if( strpos($str, "<hr>", $i) < $j) {
+            $str = substr($str, 0, $i) . substr($str, $i+4, $len);
+            continue;
+        }
+        
         // Leave trailing "\r\n\r\n" so it can be picked up for next paragraph, potentionally picks up a heading in it, best i got for now
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<p>" . substr($str, $i+4, $j - $i - 1) . "</p>" . substr($str, $j-1, $len);
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<p>" . substr($str, $i+4, $j - $i - 4) . "</p>\n" . substr($str, $j, $len);
         else break;
     } while(1);
 
