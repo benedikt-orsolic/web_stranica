@@ -50,9 +50,10 @@ while($row = mysqli_fetch_assoc($result)){
     
     $markDownToHtml->setStr( $row['text'] );
 
-    echo( '<article id="blogPost=' .$row['upid']. '" class="blogPost">' . "\n");
-    echo( '<h2 class="postTiele">'.$row['title'].'</h2>' . "\n" );
-    echo( '<section class="postText">' . "\n\n" . $markDownToHtml->getStr() . '</section></article>' . "\n\n" );
+    echo( '<article id="blogPost=' .$row['upid']. '" class="blogPost">');
+    echo( '<h2 class="postTiele">'.$row['title'].'</h2>' );
+    echo( '<section class="postText">'. $markDownToHtml->getStr() .'</section>' );
+    echo( '</article>'); 
 }
 
 unset( $markDownToHtml );
