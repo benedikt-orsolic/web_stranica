@@ -160,6 +160,15 @@ function getWithMarkDownToHTML( $str ) {
         else break;
     } while(1);
 
+    //Line break
+    // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
+    do{
+        $i = strpos($str, "  ");
+
+        if( $i !== false ) $str = substr($str, 0, $i) . "<br>" . substr($str, $i+3, $len);
+        else break;
+    } while(1);
+
 
     //Paragraphs
     do{
