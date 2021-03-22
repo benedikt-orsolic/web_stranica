@@ -1,6 +1,7 @@
 .blogPost {
     border: solid 1px black;
     padding: 1rem;
+    margin-bottom: 5rem;
 }
 
 #blogPostTitle {
