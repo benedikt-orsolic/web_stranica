@@ -135,29 +135,29 @@ class MarkDownToHtml{
             }
             else break;
         } while(1);
-
+        */
         //Bold and italic text
         do{
 
             // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 3, -3, -3, "***", "***", 1, "<strong><em>", "</em></strong>") ) continue;
+            if( $this->markDownSubstitute(0, 3, -3, 3, "***", "***", 1, "<strong><em>", "</em></strong>") ) continue;
             else break;
         } while(1);
-
+        
         //Bold text
         do{
 
-            if( $this->markDownSubstitute(0, 2, -2, -2, "**", "**", 1, "<strong>", "</strong>") ) continue;
+            if( $this->markDownSubstitute(0, 2, -2, 2, "**", "**", 1, "<strong>", "</strong>") ) continue;
             else break;
         } while(1);
 
         //Italic
         do{
 
-            if( $this->markDownSubstitute(0, 1, -1, +1, "*", "*", 1, "<em>", "</em>") ) continue;
+            if( $this->markDownSubstitute(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>") ) continue;
             else break;
         } while(1);
-
+        /*
         //Horizontal rule
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
         do{
