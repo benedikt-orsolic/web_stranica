@@ -129,7 +129,7 @@ function getWithMarkDownToHTML( $str ) {
         $i = strpos($str, "***");
         $j = strpos($str, "***", $i + 1);
 
-        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<strong><em>" . substr($str, $i+2, $j - $i - 2) . "</em></strong>" . substr($str, $j+2, $len);
+        if( $i !== false && $j !== false ) $str = substr($str, 0, $i) . "<strong><em>" . substr($str, $i+3, $j - $i - 3) . "</em></strong>" . substr($str, $j+3, $len);
         else break;
     } while(1);
 
