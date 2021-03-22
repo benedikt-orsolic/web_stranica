@@ -40,31 +40,31 @@ class MarkDownToHtml{
             if( $this->markDownSubstitute(0, 1, -1, -1, "#", "\n", 1, "<h3>", "</h3>") ) continue;
             else break;
         } while(1);
-        /*
+        
         //Color
         do{
-            $i = strpos($str, "[color:");
-            $j = strpos($str, "]", $i + 1);
+            $i = strpos($this->str, "[color:");
+            $j = strpos($this->str, "]", $i + 1);
 
             $color = "";
-            if( $i !== false && $j !== false ) $color = substr($str, $i+7, $j - $i - 7);
+            if( $i !== false && $j !== false ) $color = substr($this->str, $i+7, $j - $i - 7);
             else break;
             
-            $textOpen = strpos($str, "{");
-            $textClose = strpos($str, "}");
+            $textOpen = strpos($this->str, "{");
+            $textClose = strpos($this->str, "}");
 
             if( $textOpen !== false && $textClose !== false && $i !== false && $j !== false ) {
-                $str = 
-                substr($str, 0, $i) . 
+                $this->str = 
+                substr($this->str, 0, $i) . 
                 "<span style='color: " . 
                 $color . "'>" . 
-                substr($str, $textOpen+1, $textClose - $textOpen - 1) . 
+                substr($this->str, $textOpen+1, $textClose - $textOpen - 1) . 
                 "</span>" . 
-                substr($str, $textClose+1, $len);
+                substr($this->str, $textClose+1, strlen($this->str));
             }
             else break;
         } while(1);
-        */
+        
         //Bold and italic text
         do{
 

@@ -14,9 +14,6 @@
     doesn't allow for future updates to converter
     or store markdown and html versions in db? Don't think that one is good
 
-* [color:green]{*italic green* [color:red]{with **bold** red } and more}
-  gets cut of at the end
-
 
 ## This project uses resources from
     https://fontawesome.com/
