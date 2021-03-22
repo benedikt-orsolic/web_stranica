@@ -53,6 +53,8 @@ while($row = mysqli_fetch_assoc($result)){
     echo( '<section class="postText">' . "\n\n" . $markDownToHtml->getStr() . '</section></article>' . "\n\n" );
 }
 
+unset( $markDownToHtml );
+
 mysqli_stmt_close( $stmt );
 
 
