@@ -58,18 +58,3 @@ while($row = mysqli_fetch_assoc($result)){
 unset( $markDownToHtml );
 
 mysqli_stmt_close( $stmt );
-
-
-
-
-
-
-/*
-    **Bold text**
-     *Italic   *
-    * **Bold italic** *
-    #heading#
-    --- horizontal rule
-    new lines separate paragraphs
-    [color:#ffffff]{text} or [color:blue]
-*/

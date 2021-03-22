@@ -1,5 +1,15 @@
 <?php
 
+/*
+    **Bold text**
+     *Italic   *
+    * **Bold italic** *
+    #heading#
+    --- horizontal rule
+    new lines separate paragraphs
+    [color:#ffffff]{text} or [color:blue]
+*/
+
 class MarkDownToHtml{    
     
     private string $str;

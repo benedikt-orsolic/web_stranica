@@ -14,6 +14,13 @@
     doesn't allow for future updates to converter
     or store markdown and html versions in db? Don't think that one is good
 
+## Notes
+
+* file_put_contents ( file , msg, FILE_APPEND | LOCK_EX);
+* mysqli_error($dbConn)
+* 
+* echo date('Y-m-d H:i:s');
+
 
 ## This project uses resources from
     https://fontawesome.com/
