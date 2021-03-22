@@ -188,3 +188,13 @@ function getWithMarkDownToHTML( $str ) {
 
     return $str;
 }
+
+
+function MarkDownSubstitute(string $str, int $start_endOffset, int $mid_stratOffest, int $mid_endOffset, int $end_startOffset, string $openTag, string $closeTag) {
+    return 
+        substr($str, 0, $i + $start_endOffset) . 
+        $openTag . 
+        substr($str, $i + $mid_stratOffest, $j - $i + $mid_endOffset) . 
+        $closeTag . 
+        substr($str, $j + $end_startOffset, strlen($str) );
+}
