@@ -157,7 +157,7 @@ class MarkDownToHtml{
             if( $this->markDownSubstitute(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>") ) continue;
             else break;
         } while(1);
-        /*
+        
         //Horizontal rule
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
         do{
@@ -181,15 +181,15 @@ class MarkDownToHtml{
 
             // Escape <hr> as it can't be inside <p>
             if( strpos($this->str, "<hr>", $i) < $j) {
-                $this->str = substr($this->str, 0, $i) . substr($this->str, $i+4, $len);
+                $this->str = substr($this->str, 0, $i) . substr($this->str, $i+4, strlen($this->str));
                 continue;
             }
             
             // Leave trailing "\r\n\r\n" so it can be picked up for next paragraph, potentionally picks up a heading in it, best i got for now
-            if( $i !== false && $j !== false ) $this->str = substr($this->str, 0, $i) . "<p>" . substr($this->str, $i+4, $j - $i - 4) . "</p>\n" . substr($this->str, $j, $len);
+            if( $i !== false && $j !== false ) $this->str = substr($this->str, 0, $i) . "<p>" . substr($this->str, $i+4, $j - $i - 4) . "</p>\n" . substr($this->str, $j, strlen($this->str));
             else break;
         } while(1);
-        */
+        
     }
 
 
