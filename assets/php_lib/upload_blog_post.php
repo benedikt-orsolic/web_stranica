@@ -1,7 +1,6 @@
 <?php
 
-require_once 'dbConn.inc.php';
-require_once 'blog_post.lib.php';
+include 'auto_loader.inc.php';
 
 if( !isset($_POST['submit']) ) {
     header('location: ../../blog.php');
@@ -14,5 +13,8 @@ $postImage = $_POST['postImage'];
 
 //Input sanitise
 
-uploadPost( $title, $body, $postImage, $dbConn );
+$upload = new UploadBlogPost();
+$upload->uploadPost( $title, $body, $postImage );
+
+
 header('location: ../../blog.php');
