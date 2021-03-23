@@ -21,7 +21,7 @@ if( isset($_POST['register'])) {
     $email = $_POST['email'];
 
     if( $userQuarry->userExists( $userName ) !== NULL ) {
-        header( 'location: ../../login.php?err=User alredy exists');
+        header( 'location: ../../login.php?err=User already exists');
     }
 
     $passwordCheckResult = $userQuarry->passwordValid( $password );

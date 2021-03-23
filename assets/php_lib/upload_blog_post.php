@@ -11,7 +11,7 @@ $title = $_POST['title'];
 $body = $_POST['body'];
 $postImage = $_POST['postImage'];
 
-//Input sanitise
+//Input sanitize
 
 $upload = new UploadBlogPost();
 $upload->uploadPost( $title, $body, $postImage );
