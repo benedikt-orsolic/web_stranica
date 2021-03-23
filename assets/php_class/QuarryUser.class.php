@@ -11,14 +11,14 @@ class QuarryUser extends Dbh {
         $stmt->execute( [ $userName ] );
 
         $result = $stmt->fetch(); 
-        
+
         if( empty( $result ) == 1 ) return NULL;
         return $result;
 
     }
 
 
-    function insertUser($userName, $password, $email) {
+    public function insertUser($userName, $password, $email) {
 
         $sql = "INSERT INTO users (email, username, password) VALUES (?, ?, ?);";
         $stmt = $this->getConnection()->prepare( $sql );
@@ -31,7 +31,7 @@ class QuarryUser extends Dbh {
     }
 
     /* Return NULL if no errors or warnings */
-    function passwordValid( $password ) {
+    public function passwordValid( $password ) {
 
         //Search for all invalid passwords
         $pattern = '/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/';
