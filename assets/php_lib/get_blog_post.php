@@ -11,7 +11,7 @@ if( !isset($_POST['submit']) ) {
 $upid = $_POST['upid'];
 
 $postQuarry = new QuarryBlogPost();
-$posts = $postQuarry->getLastNPosts( $upid - 1);
+$posts = $postQuarry->getLastNPosts( $upid - 1, 5);
 
 $markDownToHtml = new MarkDownToHtml();
 

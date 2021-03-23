@@ -2,10 +2,10 @@
 
 class QuarryBlogPost extends Dbh {
 
-    public function getLastNPosts( $nextPostID ) {
+    public function getLastNPosts( $nextPostID, $limit) {
 
         if( $nextPostID <= -1 ) {
-            $sql = "SELECT * FROM blog_posts ORDER BY upid DESC LIMIT 5;";
+            $sql = "SELECT * FROM blog_posts ORDER BY upid DESC LIMIT ?;";
         } else {
             $sql = "SELECT * FROM blog_posts WHERE upid = ?;";
         }
@@ -15,7 +15,7 @@ class QuarryBlogPost extends Dbh {
         
         
         if( $nextPostID <= -1 ) {
-            $stmt->execute( );
+            $stmt->execute( [$limit] );
         } else {
             $stmt->execute( [$nextPostID] );
         }
