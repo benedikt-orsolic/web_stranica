@@ -1,9 +1,6 @@
 <?php
 
-require_once 'dbConn.inc.php';
-require_once 'login-register.lib.inc.php';
-
-
+include 'auto_loader.inc.php';
 
 
 if( !isset($_POST['submit']) ) {
@@ -12,6 +9,7 @@ if( !isset($_POST['submit']) ) {
 }
 
 
+$userQuarry = new QuarryUser();
 
 
 if( isset($_POST['login']) ) {
@@ -19,7 +17,7 @@ if( isset($_POST['login']) ) {
     $userName = $_POST['username'];
     $password = $_POST['password'];
 
-    $user = userExists($userName, $dbConn);
+    $user = $userQuarry->userExists($userName);
     if( $user === NULL || !password_verify($password, $user['password']) ) {
         header( 'location: ../../login.php?err=Bad login info');
         die();

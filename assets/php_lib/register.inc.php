@@ -1,7 +1,6 @@
 <?php
 
-require_once 'dbConn.inc.php';
-require_once 'login-register.lib.inc.php';
+include 'auto_loader.inc.php';
 
 
 if( !isset($_POST['submit']) ) {
@@ -13,28 +12,31 @@ if( !isset($_POST['submit']) ) {
 //email verification
 
 
+$userQuarry = new QuarryUser();
+
+
 if( isset($_POST['register'])) {
     $userName = $_POST['userName'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    if( userExists( $userName, $dbConn ) !== NULL ) {
-        header( 'location: ../../login.php?err=User alredy exists');
+    if( $userQuarry->userExists( $userName ) !== NULL ) {
+        header( 'location: ../../login.php?err=User already exists');
     }
 
-    $passwordCheckResult = passwordValid( $password );
+    $passwordCheckResult = $userQuarry->passwordValid( $password );
     if( !$passwordCheckResult ) {
         header( 'location: ../../login.php?err='.$passwordCheckResult );
     }
 
-    insertUser( $userName, $password, $email, $dbConn);
+    $userQuarry->insertUser( $userName, $password, $email);
     exit();
 }
 
 if( isset($_POST['verifyUserName']) ){
     $userName = $_POST['userName'];
 
-    if( userExists( $userName, $dbConn ) !== NULL ) {
+    if( $userQuarry->userExists( $userName ) !== NULL ) {
         echo( 'Username  in use');
     }
     exit();
@@ -43,7 +45,7 @@ if( isset($_POST['verifyUserName']) ){
 if( isset($_POST['verifyPassword']) ) {
 
     $password = $_POST['password'];
-    $passwordCheckResult = passwordValid($password);
+    $passwordCheckResult = $userQuarry->passwordValid($password);
     if ($passwordCheckResult != NULL) echo( $passwordCheckResult );
     else echo( 'Ok' );
 }
