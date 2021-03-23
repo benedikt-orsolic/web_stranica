@@ -11,7 +11,7 @@ class Dbh {
 
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db . ';';
         $pdo = new PDO($dsn, $this->user, $this->pwd);
-
+        
         // Db returns result as associative array
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
