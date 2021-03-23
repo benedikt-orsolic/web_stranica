@@ -11,12 +11,12 @@
 <html>
 
 <head>
-    <?php include 'html_lib/global_head_elements.html' ?>
+    <?php include 'assets/html_lib/global_head_elements.html' ?>
     <link rel="stylesheet" href="assets/css_lib/login.css">
 </head>
 
 <body>
-    <?php include 'html_lib/nav.php' ?>
+    <?php include 'assets/html_lib/nav.php' ?>
     <main>
         <h1 id="login-button" style="background-color: #888888">Log in</h1>
         <h1 id="register-button">Register</h1>

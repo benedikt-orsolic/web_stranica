@@ -2,7 +2,7 @@
     <label>Blog post title: </label><br>
     <input id='blogPostTitle' type="text" name='title'><br>
     <label>Blog post body: </label><br>
-    <textarea id='blogPostBody' name="body" rows="4" cols="50"> Entrer text here... </textarea>
+    <textarea id='blogPostBody' name="body" rows="4" cols="50">Enter text here... </textarea>
 
 
     <div style='display: inline-block'>

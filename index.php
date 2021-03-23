@@ -6,13 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include 'html_lib/global_head_elements.html' ?>
+    <?php include 'assets/html_lib/global_head_elements.html' ?>
     
 </head>
 
 <body>
     
-    <?php include 'html_lib/nav.php' ?>
+    <?php include 'assets/html_lib/nav.php' ?>
     <main>
         <h1>This is landing page</h1>
         <p>

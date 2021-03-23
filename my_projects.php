@@ -6,12 +6,12 @@
 <html>
 
 <head>
-    <?php include 'html_lib/global_head_elements.html' ?>
+    <?php include 'assets/html_lib/global_head_elements.html' ?>
     <link rel="stylesheet" href="assets/css_lib/my_projects.css">
 </head>
 
 <body>
-    <?php include 'html_lib/nav.php' ?>
+    <?php include 'assets/html_lib/nav.php' ?>
     
 <main>
 <h1>Here will be some of my projects</h1>

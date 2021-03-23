@@ -6,13 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include 'html_lib/global_head_elements.html'; ?>
+    <?php include 'assets/html_lib/global_head_elements.html'; ?>
     <link rel="stylesheet" href="assets/css_lib/blog.css">
 </head>
 
 <body>
 
-    <?php include 'html_lib/nav.php'; ?>
+    <?php include 'assets/html_lib/nav.php'; ?>
 
     <main id='main'>
         
