@@ -9,12 +9,25 @@ if( !isset($_POST['submit']) ) {
 
 $title = $_POST['title'];
 $body = $_POST['body'];
-$postImage = $_POST['postImage'];
+//$postImage = $_POST['postImage'];
 
 //Input sanitize
 
 $upload = new UploadBlogPost();
-$upload->uploadPost( $title, $body, $postImage );
+$upload->uploadPost( $title, $body );
+
+// Need to get it from db for a upid
+$postQuarry = new QuarryBlogPost();
+$posts = $postQuarry->getLastNPosts( - 1, 1);
 
 
-header('location: ../../blog.php');
+
+file_put_contents ( '../../logs/debug.log' , 'hello', FILE_APPEND | LOCK_EX);
+$getPostFromDb = new QuarryBlogPost();
+$markdownToHtml = new MarkdownToHtml();
+
+
+
+$blogPostFormating = new FormatBlogPostOutput();
+echo ( $blogPostFormating->formatPost( $posts ) );
+//header('location: ../../blog.php');

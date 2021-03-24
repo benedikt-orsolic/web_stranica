@@ -4,11 +4,6 @@
 
 * Browser doesn't warn in the same way about wrong input on register page
 * Sanitize user input
-* why is blog post upload not done using ajax??
-  allow client to pic number of posts to download, maybe would make faster loading if went by 1, 2, 3, then 5, or 10
-  once post uploaded get that first post and tac it on top
-
-  this might work
 
 * Convert markdown to php on upload
     makes for faster loading

@@ -17,9 +17,11 @@
     <main id='main'>
         
         <h1>My blog</h1>
-<?php if( isset($_SESSION['uuid']) ) include 'assets/html_lib/blog_post_form.php'; ?>
+        <?php if( isset($_SESSION['uuid']) ) include 'assets/html_lib/blog_post_form.php'; ?>
+        <section id="blogPosts"></section>
     </main>
 </body> 
 
-<script src='assets/js_lib/blog.js'></script>
+<script src='assets/js_lib/blog.js' type="text/javascript"></script>
+<script src='assets/js_lib/blogUpload.js' type="text/javascript"></script>
 </html>

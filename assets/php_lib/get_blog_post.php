@@ -9,19 +9,12 @@ if( !isset($_POST['submit']) ) {
 
 
 $upid = $_POST['upid'];
+$limit = $_POST['limit'];
 
 $postQuarry = new QuarryBlogPost();
-$posts = $postQuarry->getLastNPosts( $upid - 1, 5);
-
-$markDownToHtml = new MarkDownToHtml();
+$posts = $postQuarry->getLastNPosts( $upid - 1, $limit);
 
 
-foreach( $posts as $row) {
 
-    $markDownToHtml->setStr( $row['text'] );
-
-    echo( '<article id="blogPost=' . $row['upid'] . '" class="blogPost">');
-    echo( '<h2 class="postTitle">'. $row['title'] . '</h2>' );
-    echo( '<section class="postText">' . $markDownToHtml->getStr() . '</section>' );
-    echo( '</article>'); 
-}
+$blogPostFormatting = new FormatBlogPostOutput();
+echo ( $blogPostFormatting->formatPost( $posts ) );

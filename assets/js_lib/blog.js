@@ -13,13 +13,13 @@ function getNextToLastPost( lastPostUPID ) {
     xhttp.onreadystatechange = function() {
         
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("main").innerHTML += this.responseText;
+            document.getElementById("blogPosts").innerHTML += this.responseText;
         }
     };
 
     xhttp.open('POST', 'assets/php_lib/get_blog_post.php', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('submit=1&getBlogPost=1&upid=' + lastPostUPID );
+    xhttp.send('submit=1&getBlogPost=1&limit=5&upid=' + lastPostUPID );
 }
 
 function getUpidOfLastPost() {
