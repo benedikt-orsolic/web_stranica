@@ -75,6 +75,31 @@ class MarkDownToHtml{
             else break;
         } while(1);
 
+        
+
+        //Img
+        do{
+            $i = strpos($this->str, "![");
+            $j = strpos($this->str, "]", $i + 1);
+
+            if( $i !== false && $j !== false ) $imgAlt = substr($this->str, $i + 1, $j - $i - 1);
+            else break;
+            
+            $urlOpen = strpos($this->str, "(");
+            $urlClose = strpos($this->str, ")");
+
+            if( $urlOpen !== false && $urlClose !== false && $i !== false && $j !== false ) $url = substr($this->str, $urlOpen + 1, $urlClose - $urlOpen - 1) ;
+            else break;
+            
+            $this->str = 
+                substr($this->str, 0, $i) . 
+                "<img class=\"blogPostImage\" src=\"" . $url . "\" alt=\"" . $imgAlt . "\">" .
+                substr($this->str, $urlClose+1, strlen($this->str));
+            
+        } while(1);
+        
+
+
         //Link
         do{
             $i = strpos($this->str, "[");
@@ -97,7 +122,8 @@ class MarkDownToHtml{
                 substr($this->str, $urlClose+1, strlen($this->str));
             
         } while(1);
-        
+
+
         //Bold and italic text
         do{
 
