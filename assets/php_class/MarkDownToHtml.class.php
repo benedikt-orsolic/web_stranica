@@ -118,7 +118,7 @@ class MarkDownToHtml{
             
             $this->str = 
                 substr($this->str, 0, $i) . 
-                " <a href=\"" . $url . "\">" . $linkText . "</a>" .
+                "<a href=\"" . $url . "\">" . $linkText . "</a>" .
                 substr($this->str, $urlClose+1, strlen($this->str));
             
         } while(1);
@@ -157,7 +157,7 @@ class MarkDownToHtml{
         //Line break
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
         do{
-            if( $this->markDownSubstitute(0, 0, 0, +3, "  ", "  ", 0, "<br>\n", "") ) continue;
+            if( $this->markDownSubstitute(0, 0, 0, +2, "  ", "  ", 0, "<br>\n", "") ) continue;
             else break;
         } while(1);
 
