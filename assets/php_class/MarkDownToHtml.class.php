@@ -31,7 +31,7 @@ class MarkDownToHtml{
         do{
             
             // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 3, -1, -1, "###", "\n", 1, "<h5>", "</h5>") ) continue;
+            if( $this->markDownSubstitute(0, 3, -1, 0, "###", "\n", 1, "<h5>", "</h5>") ) continue;
             else break;
         } while(1);
 
@@ -39,7 +39,7 @@ class MarkDownToHtml{
         do{
 
             // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 2, -1, -1, "##", "\n", 1, "<h4>", "</h4>") ) continue;
+            if( $this->markDownSubstitute(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>") ) continue;
             else break;
         } while(1);
 
@@ -47,7 +47,7 @@ class MarkDownToHtml{
         do{
 
             // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 1, -1, -1, "#", "\n", 1, "<h3>", "</h3>") ) continue;
+            if( $this->markDownSubstitute(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>") ) continue;
             else break;
         } while(1);
         
@@ -82,7 +82,7 @@ class MarkDownToHtml{
             $i = strpos($this->str, "![");
             $j = strpos($this->str, "]", $i + 1);
 
-            if( $i !== false && $j !== false ) $imgAlt = substr($this->str, $i + 1, $j - $i - 1);
+            if( $i !== false && $j !== false ) $imgAlt = substr($this->str, $i + 2, $j - $i - 2);
             else break;
             
             $urlOpen = strpos($this->str, "(");
@@ -118,7 +118,7 @@ class MarkDownToHtml{
             
             $this->str = 
                 substr($this->str, 0, $i) . 
-                "<a href=\"" . $url . "\">" . $linkText . "</a>" .
+                " <a href=\"" . $url . "\">" . $linkText . "</a>" .
                 substr($this->str, $urlClose+1, strlen($this->str));
             
         } while(1);
@@ -157,7 +157,7 @@ class MarkDownToHtml{
         //Line break
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
         do{
-            if( $this->markDownSubstitute(0, 0, 0, +3, "  ", "  ", 0, "<br>", "") ) continue;
+            if( $this->markDownSubstitute(0, 0, 0, +3, "  ", "  ", 0, "<br>\n", "") ) continue;
             else break;
         } while(1);
 
