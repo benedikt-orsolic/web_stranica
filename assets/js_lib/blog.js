@@ -25,12 +25,12 @@ function getNextToLastPost( lastPostUPID ) {
 function getUpidOfLastPost() {
     var error = 0;
     try {
-        var lastChild = document.getElementById("main").lastChild.getAttribute("id");
+        var lastChild = document.getElementById("blogPosts").lastChild.getAttribute("id");
     } catch (x) {
         var lastChildId = -1;
         error = 1;
     } finally {
-        if( !error )var lastChildId = document.getElementById("main").lastChild.getAttribute("id").substring(9);
+        if( !error )var lastChildId = document.getElementById("blogPosts").lastChild.getAttribute("id").substring(9);
     }
     return String(lastChildId);
 }
