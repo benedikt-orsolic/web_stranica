@@ -10,7 +10,8 @@
     doesn't allow for future updates to converter
     or store markdown and html versions in db? Don't think that one is good
 
-* Blog page add img support.
+* using current markdown [color: red; *css style* ]{ *what ever* }
+  allows for more css style so I'm thing replace [color:*color*] with [style=*css styles*]
 * Allow editing of posts
 
 ## Notes
