@@ -74,6 +74,29 @@ class MarkDownToHtml{
             }
             else break;
         } while(1);
+
+        //Link
+        do{
+            $i = strpos($this->str, "[");
+            $j = strpos($this->str, "]", $i + 1);
+
+            $linkText = "";
+
+            if( $i !== false && $j !== false ) $linkText = substr($this->str, $i + 1, $j - $i - 1);
+            else break;
+            
+            $urlOpen = strpos($this->str, "(");
+            $urlClose = strpos($this->str, ")");
+
+            if( $urlOpen !== false && $urlClose !== false && $i !== false && $j !== false ) $url = substr($this->str, $urlOpen + 1, $urlClose - $urlOpen - 1) ;
+            else break;
+            
+            $this->str = 
+                substr($this->str, 0, $i) . 
+                "<a href=\"" . $url . "\">" . $linkText . "</a>" .
+                substr($this->str, $urlClose+1, strlen($this->str));
+            
+        } while(1);
         
         //Bold and italic text
         do{
