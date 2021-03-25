@@ -22,7 +22,7 @@ function uploadPost( title, text ) {
     xhttp.onreadystatechange = function() {
         
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("blogPosts").innerHTML = this.responseText + document.getElementById("main").innerHTML;
+            document.getElementById("blogPosts").innerHTML = this.responseText + document.getElementById("blogPosts").innerHTML;
         }
     };
 
