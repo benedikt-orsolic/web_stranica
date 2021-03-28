@@ -14,6 +14,10 @@
 
 
 </div>
+
+<section>
+    <input id="blogImageFileUpload" type="file" name="imageUpload"/>
+</section>
 <br>
 
 
