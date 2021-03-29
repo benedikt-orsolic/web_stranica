@@ -9,7 +9,7 @@
     <label>Blog post body: </label><br>
     <textarea id='blogPostBody' name="body" rows="4" cols="50">Enter text here... </textarea>
 
-    <input onclick=" uploadAndRetrieveConverted()" id="blogPostSubmitButton" name="submit" type="submit" value='Post' style="float: right;"></button>
+    <input onclick="updatePost()" id="blogPostSubmitButton" name="submit" type="submit" value='Post' style="float: right;"></button>
 
     <input id="blogImageFileUpload" type="file" name="imageUpload"/>
 </section>
