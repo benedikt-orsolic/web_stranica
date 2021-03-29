@@ -13,7 +13,7 @@ class BlogCreatePost extends Dbh{
             return NULL;
         }
 
-        $stmt->execute(  );
+        $stmt->execute( [$owner] );
 
         return $this->getUPID($owner);
     }
