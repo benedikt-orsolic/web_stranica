@@ -6,6 +6,11 @@ class UploadBlogPost extends Dbh {
 
         $sql = 'INSERT INTO blog_posts (title, text) VALUES ( ?, ? );';
         $stmt = $this->getConnection()->prepare( $sql );
+
+        $title = htmlentities($title);
+        $body = htmlentities($body);
+
+        
         $stmt->execute( [$title, $body] );
         
     }
