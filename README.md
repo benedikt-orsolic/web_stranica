@@ -2,6 +2,8 @@
 
 ## TODO
 
+* js error on blog post when not logged in
+
 * Browser doesn't warn in the same way about wrong input on register page
 * Sanitize user input
 
