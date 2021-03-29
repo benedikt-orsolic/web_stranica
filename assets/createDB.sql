@@ -8,8 +8,10 @@ CREATE TABLE users (
     password varchar(256)
 );
 
-CREATE TABLE blog_posts (
-    upid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    title varchar(1024),
-    text text
+CREATE TABLE blog_posts(
+    upid INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    ownerId INT(11) NOT NULL,
+    title VARCHAR(1024),
+    TEXT TEXT,
+    FOREIGN KEY(ownerId) REFERENCES users(UUID)
 )
