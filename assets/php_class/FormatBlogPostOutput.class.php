@@ -4,6 +4,12 @@ class FormatBlogPostOutput extends MarkDownToHtml {
 
     public function formatPost ( $posts ) {
 
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if( isset($_SESSION['uuid'])) $uuid = $_SESSION['uuid'];
+        else $uuid = null;
+        ;
 
         foreach( $posts as $row) {
 
@@ -14,12 +20,12 @@ class FormatBlogPostOutput extends MarkDownToHtml {
                 $str = $this->getStr();
             }
         
-            print_r('<article id="blogPost=' . $row['upid'] . '" class="blogPost">' .
+            echo   '<article id="blogPost=' . $row['upid'] . '" class="blogPost">' .
                    '<h2 class="postTitle">'. $row['title'] . '</h2>' .
                    '<section class="postText">' . $str . '</section>' .
-                   '<address>' . $row['ownerId'] . '</address>' .
-                   '<button name="editPost">Edit post</button>' . 
-                   '</article>'); 
+                   '<address>' . $row['ownerId'] . '</address>';
+            echo   $uuid !== null && $row['ownerId'] === $uuid ? '<button name="editPost">Edit post</button>' : '';
+            echo   '</article>'; 
         }
     }
 }
