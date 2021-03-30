@@ -1,6 +1,13 @@
 document.getElementById('blogPostSubmitButton').addEventListener('click', () => {
             updatePost();
-})
+});
+
+document.getElementById('blogPosts').addEventListener('click', (event) => {
+
+    if(event.target.nodeName === 'BUTTON') {
+        openPostUpdate(event.target.parentElement);
+    }
+});
 
 function updatePost() {
 
@@ -22,4 +29,8 @@ function updatePost() {
 
     xhttp.open('POST', 'assets/php_lib/blogUpdatePost.php', true);
     xhttp.send( formData );
+}
+
+function openPostUpdate(postWraper) {
+    console.log(postWraper.getAttribute("id").substring(9));
 }

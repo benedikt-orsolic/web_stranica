@@ -4,6 +4,7 @@ class FormatBlogPostOutput extends MarkDownToHtml {
 
     public function formatPost ( $posts ) {
 
+
         foreach( $posts as $row) {
 
             $str;
@@ -17,6 +18,7 @@ class FormatBlogPostOutput extends MarkDownToHtml {
                    '<h2 class="postTitle">'. $row['title'] . '</h2>' .
                    '<section class="postText">' . $str . '</section>' .
                    '<address>' . $row['ownerId'] . '</address>' .
+                   '<button name="editPost">Edit post</button>' . 
                    '</article>'); 
         }
     }
