@@ -6,14 +6,18 @@ class FormatBlogPostOutput extends MarkDownToHtml {
 
         foreach( $posts as $row) {
 
-            if( $row['text'] === null ) continue;
-
-            $this->setStr( $row['text'] );
+            $str;
+            if( $row['text'] === null ) $str = '';
+            else {
+                $this->setStr( $row['text'] );
+                $str = $this->getStr();
+            }
         
-            return '<article id="blogPost=' . $row['upid'] . '" class="blogPost">' .
+            print_r('<article id="blogPost=' . $row['upid'] . '" class="blogPost">' .
                    '<h2 class="postTitle">'. $row['title'] . '</h2>' .
-                   '<section class="postText">' . $this->getStr() . '</section>' .
-                   '</article>'; 
+                   '<section class="postText">' . $str . '</section>' .
+                   '<address>' . $row['ownerId'] . '</address>' .
+                   '</article>'); 
         }
     }
 }
