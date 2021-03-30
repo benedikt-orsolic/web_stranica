@@ -6,6 +6,8 @@ class FormatBlogPostOutput extends MarkDownToHtml {
 
         foreach( $posts as $row) {
 
+            if( $row['text'] === null ) continue;
+
             $this->setStr( $row['text'] );
         
             return '<article id="blogPost=' . $row['upid'] . '" class="blogPost">' .
