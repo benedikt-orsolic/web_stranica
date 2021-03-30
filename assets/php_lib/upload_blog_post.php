@@ -13,10 +13,8 @@ $body = $_POST['body'];
 
 //Input sanitize
 
-session_start();
 $upload = new UploadBlogPost();
-$upload->uploadPost( $title, $body, $_SESSION['uuid'] );
-
+$upload->uploadPost( $title, $body );
 
 // Need to get it from db for a upid
 $postQuarry = new QuarryBlogPost();

@@ -2,16 +2,11 @@
 
 class UploadBlogPost extends Dbh {
 
-    public function uploadPost( string $title, string $body, int $ownerId ) {
+    public function uploadPost( $title, $body ) {
 
-        $sql = 'INSERT INTO blog_posts (title, text, ownerId ) VALUES ( ?, ?, ? );';
+        $sql = 'INSERT INTO blog_posts (title, text) VALUES ( ?, ? );';
         $stmt = $this->getConnection()->prepare( $sql );
-
-        $title = htmlentities($title);
-        $body = htmlentities($body);
-
-        
-        $stmt->execute( [$title, $body, $ownerId] );
+        $stmt->execute( [$title, $body] );
         
     }
 }
