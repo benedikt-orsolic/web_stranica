@@ -43,6 +43,7 @@ function openPostUpdate(postWarper) {
             let blogPostData =  JSON.parse(this.responseText);
 
             openPostEditor(blogPostData.upid);
+            updatePostEditorWithRawData(blogPostData);
         }
     }
 
@@ -58,4 +59,12 @@ function openPostEditor(upid){
         '<input style="display: none;"type="number" id="blogPostUpid" value="' +
         upid +
         '">';
+}
+
+
+
+function updatePostEditorWithRawData(rawPostFormData) {
+    
+    document.getElementById('blogPostTitle').value = rawPostFormData.title;
+    document.getElementById('blogPostBody').value = rawPostFormData.text;
 }
