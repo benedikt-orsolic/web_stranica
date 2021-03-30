@@ -31,6 +31,31 @@ function updatePost() {
     xhttp.send( formData );
 }
 
-function openPostUpdate(postWraper) {
-    console.log(postWraper.getAttribute("id").substring(9));
+function openPostUpdate(postWarper) {
+
+    const formData = new FormData();
+    formData.append('upid', postWarper.getAttribute("id").substring(9));
+
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let blogPostData =  JSON.parse(this.responseText);
+
+            openPostEditor(blogPostData.upid);
+        }
+    }
+
+    xhttp.open('POST', 'assets/php_lib/blogGetRawPost.php');
+    xhttp.send(formData);
+}
+
+
+
+function openPostEditor(upid){
+    document.getElementById('blogEditor').style.display = 'block';
+    document.getElementById('blogEditor').innerHTML += 
+        '<input style="display: none;"type="number" id="blogPostUpid" value="' +
+        upid +
+        '">';
 }
