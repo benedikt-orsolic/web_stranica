@@ -4,7 +4,7 @@ class ImageHandler {
 
     const allowed_file_types = ['image/png', 'image/jpeg', 'application/pdf'];
 
-    public function processImgFile($postId, $file) {
+    public function processImgFile(int $postId, array $file) {
 
         $tmp_name = $file['tmp_name'];
 
@@ -15,9 +15,10 @@ class ImageHandler {
 
         if(!in_array($mime_type, ImageHandler::allowed_file_types)) return 0;
 
-        $extention = end(explode('/', $mime_type));
+        $explodeMIME = explode('/', $mime_type);
+        $extension = end($explodeMIME);
 
-        $destination = '../../images/' . $postId . '.' . $extention;
+        $destination = '../../images/' . $postId . '-' . uniqid() . '.' . $extension;
 
         if (move_uploaded_file ($tmp_name , $destination)) return 1;
     }
