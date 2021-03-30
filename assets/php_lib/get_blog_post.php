@@ -15,6 +15,5 @@ $postQuarry = new QuarryBlogPost();
 $posts = $postQuarry->getLastNPosts( $upid - 1, $limit);
 
 
-
 $blogPostFormatting = new FormatBlogPostOutput();
-echo ( $blogPostFormatting->formatPost( $posts ) );
+$blogPostFormatting->formatPost( $posts );
