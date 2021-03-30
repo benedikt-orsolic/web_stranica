@@ -15,8 +15,7 @@
 
 </div>
 
-<section>
-    <input id="blogImageFileUpload" type="file" name="imageUpload"/>
+    <input id="blogImageFileUpload" type="file">
 </section>
 <br>
 
