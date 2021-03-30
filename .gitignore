@@ -1,3 +1,5 @@
 logs
 .VSCodeCounter
 images
+.vscode/settings.json
+.gitignore

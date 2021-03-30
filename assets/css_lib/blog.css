@@ -20,3 +20,11 @@
     margin-bottom: 1vh;
 }
 
+#blogEditor {
+    display: none;
+}
+
+.postImage {
+    width: 100%;
+}
+

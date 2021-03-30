@@ -23,6 +23,11 @@
 </body> 
 
 <script src='assets/js_lib/blog.js' type="text/javascript"></script>
-<script src='assets/js_lib/blogUpload.js' type="text/javascript"></script>
-<script src='assets/js_lib/blogImageUpload.js' type="text/javascript"></script>
+
+<?php if( isset($_SESSION['uuid']) ) echo "
+    <script src='assets/js_lib/blogUpdate.js' type='text/javascript'></script>
+    <script src='assets/js_lib/blogImageUpload.js' type='text/javascript'></script>
+    <script src='assets/js_lib/blogCreatePost.js' type='text/javascript'></script>";
+?>
+
 </html>

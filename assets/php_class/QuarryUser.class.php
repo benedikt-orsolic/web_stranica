@@ -25,10 +25,6 @@ class QuarryUser extends Dbh {
 
         $password = password_hash( $password, PASSWORD_DEFAULT );
 
-        $userName = htmlentities($userName);
-        $password = htmlentities($password);
-        $email = htmlentities($email);
-
         $stmt->execute( [ $email, $userName, $password ] );
 
         print_r( $stmt->fetchAll());

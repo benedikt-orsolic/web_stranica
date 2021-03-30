@@ -1,21 +1,17 @@
-<div action="" method="post">
+<button id="createNewPost">
+    Create a new post
+</button>
+
+
+<section id="blogEditor">
     <label>Blog post title: </label><br>
     <input id='blogPostTitle' type="text" name='title'><br>
     <label>Blog post body: </label><br>
     <textarea id='blogPostBody' name="body" rows="4" cols="50">Enter text here... </textarea>
 
-    <!--
-    <div style='display: inline-block'>
-        <label>Add a nice image to represent your post: </label><br>
-        <input type='file' name='postImage'>
-    </div> 
-    -->
-    <input onclick=" uploadAndRetrieveConverted()" id="blogPostSubmitButton" name="submit" type="submit" value='Post' style="float: right;"></button>
+    <input onclick="updatePost()" id="blogPostSubmitButton" name="submit" type="submit" value='Post' style="float: right;"></button>
 
-
-</div>
-
-    <input id="blogImageFileUpload" type="file">
+    <input onchange="uploadImage()" id="blogImageFileUpload" type="file" name="imageUpload"/>
 </section>
 <br>
 
