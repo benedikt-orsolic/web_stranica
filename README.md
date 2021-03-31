@@ -19,6 +19,8 @@
 * Page should refresh after post update or update actual post on the page
   move view to the top after edit button clicked, imagine last post on the page edited, scroll all the way back
 
+* blogGetRawPost.php should not block other users from reding raw post data
+
 ## Notes
 
 * file_put_contents ( file , msg, FILE_APPEND | LOCK_EX);
