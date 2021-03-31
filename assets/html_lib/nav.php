@@ -24,6 +24,15 @@
                     session_start();
                 }
                 if(isset($_SESSION['uuid'])) {
+
+                    echo('
+                    <a href="my_account.php"  class="navLink">
+                        <i class="navIcon fas fa-user-alt"></i> 
+                        <span class="navText">My account</span>
+                    </a>
+                    ');
+
+
                     echo('
                     <a href="assets/php_lib/logout.php"  class="navLink">
                         <i class="navIcon fas fa-sign-out-alt fa-sm"></i> 

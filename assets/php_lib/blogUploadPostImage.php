@@ -31,7 +31,7 @@ if( $postOwner != $_SESSION['uuid'] ) {
 
 
 $blogImageHandler = new ImageHandler();
-if(!$blogImageHandler->processImgFile($postId, $_FILES['imgUpload'])) {
+if(!$blogImageHandler->processImgFile($postId, $postOwner, $_FILES['imgUpload'])) {
     http_response_code(400);
     echo('Bad request');
     die();
