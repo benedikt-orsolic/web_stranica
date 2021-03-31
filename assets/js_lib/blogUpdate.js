@@ -13,6 +13,7 @@ document.getElementById('blogPosts').addEventListener('click', (event) => {
 
 function updatePost() {
     clearInterval(interval_blog_preview_update);
+    document.getElementById('createNewPost').style.display = 'inline';
     document.getElementById('blogEditorWarper').style.display = 'none';
 }
 
@@ -40,6 +41,8 @@ function openPostUpdate(postWarper) {
 
 function openPostEditor(upid){
     document.getElementById('blogEditorWarper').style.display = 'block';
+    document.getElementById('createNewPost').style.display = 'none';
+
     document.getElementById('blogEditor').innerHTML += 
         '<input style="display: none;"type="number" id="blogPostUpid" value="' +
         upid +

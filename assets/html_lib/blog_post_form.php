@@ -1,7 +1,5 @@
 <div id="blogEditorWarper">
-    <button id="createNewPost">
-        Create a new post
-    </button>
+    
 
 
     <section id="blogEditor">
@@ -18,6 +16,10 @@
     <section id="blogPreview">
     </section>
 </div>
+
+<button id="createNewPost">
+        Create a new post
+    </button>
 <br>
 
 
