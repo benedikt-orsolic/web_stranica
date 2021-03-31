@@ -22,21 +22,17 @@ class AccountDelete extends Dbh {
     }
 
     private function deleteAllImages(int $uuid) {
-        $sql = 'SELECT upid FROM blog_posts WHERE ownerId = ?;';
-        $stmt = $this->getConnection()->prepare( $sql );
-        $stmt->execute( [ $uuid ] );
+        
+        $imgFolderPath = '../../images/';
+        $imgList = scandir($imgFolderPath);
+        $uuidStr = (String)($uuid);
 
-        $rows = $stmt->fetchAll();
-        foreach($rows as $row) {
-            $imgList = scandir('../../images');
-            $upidStr = (String)($row['upid']);
-
-            for( $i = 2; $i < count($imgList); $i++ ) {
-                
-                if(strcmp($upidStr, explode('-', $imgList[$i])[0]) === 0) {
-                    unlink($imgList[$i]);
-                }
+        for( $i = 2; $i < count($imgList); $i++ ) {
+            echo $uuidStr . ' - ' . explode('-', $imgList[$i])[1] . '<br>';
+            if(strcmp($uuidStr, explode('-', $imgList[$i])[1]) === 0) {
+                unlink($imgFolderPath . $imgList[$i]);
             }
         }
+        
     }
 }
