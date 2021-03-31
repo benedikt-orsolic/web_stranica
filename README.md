@@ -16,6 +16,9 @@
   allows for more css style so I'm thing replace [color:*color*] with [style=*css styles*]
 * Allow editing of posts
 
+* Page should refresh after post update or update actual post on the page
+  move view to the top after edit button clicked, imagine last post on the page edited, scroll all the way back
+
 ## Notes
 
 * file_put_contents ( file , msg, FILE_APPEND | LOCK_EX);

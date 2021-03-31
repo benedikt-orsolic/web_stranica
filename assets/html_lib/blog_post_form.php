@@ -10,7 +10,7 @@
         <label>Blog post body: </label><br>
         <textarea id='blogPostBody' name="body">Enter text here... </textarea>
 
-        <input onclick="updatePost()" id="blogPostSubmitButton" name="submit" type="submit" value='Post' style="float: right;"></button>
+        <input onclick="updatePost()" id="blogPostSubmitButton" name="submit" type="submit" value='Update post' style="float: right;"></button>
 
         <input onchange="uploadImage()" id="blogImageFileUpload" type="file" name="imageUpload"/>
     </section>
