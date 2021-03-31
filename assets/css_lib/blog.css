@@ -15,13 +15,25 @@
 
 #blogPostBody {
     width: 100%;
-    height: 50vh;
+    height: 35vh;
     
     margin-bottom: 1vh;
 }
 
 #blogEditor {
+    display: inline-block;
+    float: left;
+}
+
+#blogPreview {
+    display: inline-block;
+    max-width: 45vw;;
+}
+
+#blogEditorWarper {
     display: none;
+    margin-bottom: 5vh;
+    height: 100vh;
 }
 
 .postImage {

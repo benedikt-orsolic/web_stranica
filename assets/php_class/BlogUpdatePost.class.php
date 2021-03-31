@@ -14,5 +14,6 @@ class BlogUpdatePost extends Dbh{
         }
 
         $stmt->execute( [$title, $text, $upid] );
+        return $stmt->fetchAll();
     }
 }

@@ -13,6 +13,20 @@ if( !isset($_SESSION['uuid']) ){
     die();
 }
 
+$owner = $_SESSION['uuid'];
+
 
 $update = new BlogUpdatePost();
 $update->update($_POST['upid'], $_POST['title'], $_POST['body']);
+
+if( isset($_POST['returnFormatted'])) {
+    $postFormatting = new FormatBlogPostOutput();
+    $postFormatting->formatPost(
+        array(0 => array(
+            'upid' => $_POST['upid'],
+            'title' => $_POST['title'],
+            'ownerId' => $owner,
+            'text' => $_POST['body']
+        ))
+    );
+}
