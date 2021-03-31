@@ -1,3 +1,5 @@
+var blog_preview_update;
+
 document.getElementById('blogPostSubmitButton').addEventListener('click', () => {
             updatePost();
 });
@@ -54,11 +56,13 @@ function openPostUpdate(postWarper) {
 
 
 function openPostEditor(upid){
-    document.getElementById('blogEditor').style.display = 'block';
+    document.getElementById('blogEditorWarper').style.display = 'block';
     document.getElementById('blogEditor').innerHTML += 
         '<input style="display: none;"type="number" id="blogPostUpid" value="' +
         upid +
         '">';
+    
+        blog_preview_update = setInterval(updatePreview, 200);
 }
 
 
@@ -67,4 +71,28 @@ function updatePostEditorWithRawData(rawPostFormData) {
     
     document.getElementById('blogPostTitle').value = rawPostFormData.title;
     document.getElementById('blogPostBody').value = rawPostFormData.text;
+}
+
+
+
+function updatePreview() {
+
+    console.log('hello')
+
+    const formData = new FormData();
+    formData.append('returnFormatted', 1);
+    formData.append('upid', document.getElementById('blogPostUpid').value)
+    formData.append('title', document.getElementById('blogPostTitle').value);
+    formData.append('body', document.getElementById('blogPostBody').value);
+
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200){
+            document.getElementById('blogPreview').innerHTML = this.responseText;
+        }
+    }
+
+    xhttp.open('POST', 'assets/php_lib/blogUpdatePost.php', true);
+    xhttp.send( formData );
 }
