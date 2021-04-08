@@ -28,7 +28,6 @@ class FormatBlogPostOutput extends MarkDownToHtml {
             echo   '<br>';
             
             $upidStr = (String)($row['upid']);
-            BlogGeneratePostImgArray::getImgUrlArray($upidStr, "", "postImage");
             echo   '</article>'; 
         }
     }

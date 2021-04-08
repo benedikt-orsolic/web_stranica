@@ -1,8 +1,8 @@
 <?php
 
-class BlogGeneratePostImgArray {
+class BlogPostImgArray {
 
-    private $imgList = null;
+    private $imgList = array();
 
     public function __construct(string $upidStr) {
 
@@ -21,9 +21,13 @@ class BlogGeneratePostImgArray {
     }
     
     public function getFormattedImgList($imgClassList) {
+
+        $result = '';
+        return $this->imgList;
         foreach($this->imgList as $img) {
-            echo '<img class="' . $imgClassList . '" src="images/'. $img . '">';
+            $result .= '<img class="' . $imgClassList . '" src="images/'. $img . '">';
         }
+        return $result;
     }
 
     public function deleteImgsFromList() {
