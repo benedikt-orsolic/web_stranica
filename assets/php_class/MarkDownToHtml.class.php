@@ -28,28 +28,16 @@ class MarkDownToHtml{
     private function getWithMarkDownToHTML() {
         
         //Lowest heading
-        do{
-            
-            // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 3, -1, 0, "###", "\n", 1, "<h5>", "</h5>") ) continue;
-            else break;
-        } while(1);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        $this->findAndSubstitute(0, 3, -1, 0, "###", "\n", 1, "<h5>", "</h5>");
 
         //Middle heading
-        do{
-
-            // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>") ) continue;
-            else break;
-        } while(1);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        $this->findAndSubstitute(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>");
 
         //Highest heading
-        do{
-
-            // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>") ) continue;
-            else break;
-        } while(1);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        $this->findAndSubstitute(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>");
         
         //Color
         do{
@@ -125,41 +113,22 @@ class MarkDownToHtml{
 
 
         //Bold and italic text
-        do{
-
-            // new line char at index $j has to be left or paragraph wont be recognised later
-            if( $this->markDownSubstitute(0, 3, -3, 3, "***", "***", 1, "<strong><em>", "</em></strong>") ) continue;
-            else break;
-        } while(1);
+        // new line char at index $j has to be left or paragraph wont be recognised later
+        $this->findAndSubstitute(0, 3, -3, 3, "***", "***", 1, "<strong><em>", "</em></strong>");
         
         //Bold text
-        do{
-
-            if( $this->markDownSubstitute(0, 2, -2, 2, "**", "**", 1, "<strong>", "</strong>") ) continue;
-            else break;
-        } while(1);
+        $this->findAndSubstitute(0, 2, -2, 2, "**", "**", 1, "<strong>", "</strong>");
 
         //Italic
-        do{
-
-            if( $this->markDownSubstitute(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>") ) continue;
-            else break;
-        } while(1);
+        $this->findAndSubstitute(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>");
         
         //Horizontal rule
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
-        do{
-
-            if( $this->markDownSubstitute(0, 0, 0, +3, "---", "---", 0, "\r\n\r\n<hr>\r\n\r\n", "") ) continue;
-            else break;
-        } while(1);
+        $this->findAndSubstitute(0, 0, 0, +3, "---", "---", 0, "\r\n\r\n<hr>\r\n\r\n", "");
 
         //Line break
         // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
-        do{
-            if( $this->markDownSubstitute(0, 0, 0, +2, "  ", "  ", 0, "<br>\n", "") ) continue;
-            else break;
-        } while(1);
+        $this->findAndSubstitute(0, 0, 0, +2, "  ", "  ", 0, "<br>\n", "");
 
 
         //Paragraphs
@@ -178,6 +147,20 @@ class MarkDownToHtml{
             else break;
         } while(1);
         
+    }
+
+    private function findAndSubstitute(int $start_endOffset, int $mid_stratOffest, int $mid_endOffset, int $end_startOffset, 
+                                       string $openMark, string $closeMark, int $closeMark_offset, 
+                                       string $openHTML, string $closeHTML){
+        
+        do{
+            if( $this->markDownSubstitute($start_endOffset, $mid_stratOffest, $mid_endOffset, $end_startOffset, 
+                                          $openMark, $closeMark, $closeMark_offset, 
+                                          $openHTML, $closeHTML) ) 
+            {
+                continue;
+            } else break;
+        } while (1);
     }
 
 
