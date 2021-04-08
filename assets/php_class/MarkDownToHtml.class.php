@@ -13,15 +13,24 @@
 class MarkDownToHtml{    
     
     private string $str;
+
+    // new line char at index $j has to be left or paragraph wont be recognized later
     private $substitutePattern = array(
-        array(0, 3, -1, 0, "###", "\n", 1, "<h5>", "</h5>"),                            // Heading 3
-        array(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>"),                             // Heading 2
-        array(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>"),                              // Heading 1
-        array(0, 3, -3, 3, "***", "***", 1, "<strong><em>", "</em></strong>"),          // Bold and italic
-        array(0, 2, -2, 2, "**", "**", 1, "<strong>", "</strong>"),                     // Bold
-        array(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>"),                               // Italic
-        array(0, 0, 0, +3, "---", "---", 0, "\r\n\r\n<hr>\r\n\r\n", ""),                // Horizontal rule
-        array(0, 0, 0, +2, "  ", "  ", 0, "<br>\n", ""),                                // Line break
+        //    $start_endOffset, $mid_stratOffest, $mid_endOffset, $end_startOffset, 
+                                        //   $openMark, $closeMark, $closeMark_offset, 
+                                        //   $openHTML, $closeHTML
+        /**
+         *    Start string offset from start of markdown tag
+         *       Start contents of tag, offset by 
+         */
+        array(0, 3, -1, 0, "###",    "\n",       1, "<h5>",                    "</h5>"),                           // Heading 3
+        array(0, 2, -1, 0, "##",     "\n",       1, "<h4>",                    "</h4>"),                           // Heading 2
+        array(0, 1, -1, 0, "#",      "\n",       1, "<h3>",                    "</h3>"),                           // Heading 1
+        array(0, 3, -3, 3, "***",    "***",      1, "<strong><em>",            "</em></strong>"),                  // Bold and italic
+        array(0, 2, -2, 2, "**",     "**",       1, "<strong>",                "</strong>"),                       // Bold
+        array(0, 1, -1, 1, "*",      "*",        1, "<em>",                    "</em>"),                           // Italic
+        array(0, 0, 0, +3, "---",    "---",      0, "\r\n\r\n<hr>\r\n\r\n",    ""),                                // Horizontal rule
+        array(0, 0, 0, +2, "  ",     "  ",       0, "<br>\n",                  ""),                                // Line break
     );
 
 
@@ -48,7 +57,7 @@ class MarkDownToHtml{
         //$this->findAndSubstitute(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>");
 
         //Highest heading
-        // new line char at index $j has to be left or paragraph wont be recognised later
+        
         //$this->findAndSubstitute(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>");
 
         foreach($this->substitutePattern as $pattern) {
