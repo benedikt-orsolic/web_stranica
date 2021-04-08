@@ -122,18 +122,13 @@ class MarkDownToHtml{
             substr($this->str, $suffixStrStart, strlen($this->str));
     }
 
-    private function findAndSubstitute(int $start_endOffset, int $mid_endOffset, 
-                                       string $openMark, string $closeMark, int $closeMark_offset, 
+    private function findAndSubstitute(int $startStrEndOffset, int $midStrEndOffset, 
+                                       string $openMark, string $closeMark, int $closeMarkOffset, 
                                        string $openHTML, string $closeHTML){
         
-        do{
-            if( $this->markDownSubstitute($start_endOffset, $mid_endOffset, 
-                                          $openMark, $closeMark, $closeMark_offset, 
-                                          $openHTML, $closeHTML) ) 
-            {
-                continue;
-            } else break;
-        } while (1);
+        while( $this->markDownSubstitute($startStrEndOffset, $midStrEndOffset, $openMark, $closeMark, $closeMarkOffset, $openHTML, $closeHTML) ) {
+            continue;
+        }
     }
 
 
