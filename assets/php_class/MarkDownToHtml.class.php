@@ -137,24 +137,23 @@ class MarkDownToHtml{
     }
 
 
-    private function markDownSubstitute(int $start_endOffset, int $mid_endOffset, 
-                                string $openMark, string $closeMark, int $closeMark_offset, 
-                                string $openHTML, string $closeHTML) {
+    private function markDownSubstitute(int $startStrEndOffset, int $midStrEndOffset, 
+                                        string $openMark, string $closeMark, int $closeMarkOffset, 
+                                        string $openHTML, string $closeHTML) {
         
         $i = strpos($this->str, $openMark);
-        $j = strpos($this->str, $closeMark, $i + $closeMark_offset);
+        $j = strpos($this->str, $closeMark, $i + $closeMarkOffset);
 
-        if( $i !== false && $j !== false ){
-            $this->str = substr($this->str, 0, $i + $start_endOffset) . 
-                         $openHTML . 
-                         substr($this->str, $i + strlen($openMark), $j - $i + $mid_endOffset) . 
-                         $closeHTML . 
-                         substr($this->str, $j + strlen($openMark), strlen($this->str) );
-            
-            return 1;
-        } else {
-            return 0;
-        }
+        if( $i === false && $j === false ) return false;
+        
+        $this->str = 
+            substr($this->str, 0, $i + $startStrEndOffset) . 
+            $openHTML . 
+            substr($this->str, $i + strlen($openMark), $j - $i + $midStrEndOffset) . 
+            $closeHTML . 
+            substr($this->str, $j + strlen($openMark), strlen($this->str) );
+        
+        return true;
     }
 }
 
