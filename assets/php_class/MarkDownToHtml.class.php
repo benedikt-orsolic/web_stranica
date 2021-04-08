@@ -14,7 +14,7 @@ class MarkDownToHtml{
     
     private string $str;
 
-    private static $substitutePattern = array(
+    private $substitutePattern = array(
         /*    input:    startStr . openMark . midStr . closeMark . endStr
          *    output:   startStr . openHTML . midStr . closeHTML . endStr
          * 
@@ -51,13 +51,7 @@ class MarkDownToHtml{
     private function getWithMarkDownToHTML() {
         
         foreach($this->substitutePattern as $pattern) {
-            $this->findAndSubstitute($pattern[0],
-                                     $pattern[1],
-                                     $pattern[2],
-                                     $pattern[3],
-                                     $pattern[4],
-                                     $pattern[5],
-                                     $pattern[6],);
+            $this->findAndSubstitute(...$pattern);
         }
 
         //Img
