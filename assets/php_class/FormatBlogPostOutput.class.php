@@ -27,15 +27,8 @@ class FormatBlogPostOutput extends MarkDownToHtml {
             echo   $uuid !== null && $row['ownerId'] === $uuid ? '<button name="editPost">Edit post</button>' : '';
             echo   '<br>';
             
-            $imgList = scandir('../../images');
             $upidStr = (String)($row['upid']);
-
-            for( $i = 2; $i < count($imgList); $i++ ) {
-                
-                if(strcmp($upidStr, explode('-', $imgList[$i])[0]) === 0) {
-                    echo '<img class="postImage" src="images/'. $imgList[$i] . '">';
-                }
-            }
+            BlogGeneratePostImgArray::getImgUrlArray($upidStr, "", "postImage");
             echo   '</article>'; 
         }
     }
