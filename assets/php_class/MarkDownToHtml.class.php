@@ -19,18 +19,26 @@ class MarkDownToHtml{
         //    $start_endOffset, $mid_stratOffest, $mid_endOffset, $end_startOffset, 
                                         //   $openMark, $closeMark, $closeMark_offset, 
                                         //   $openHTML, $closeHTML
-        /**
-         *    Start string offset from start of markdown tag
-         *       Start contents of tag, offset by 
+        /*    input:    startStr . openMark . midStr . closeMark . endStr
+         *    output:   startStr . openHTML . midStr . closeHTML . endStr
+         * 
+         * 
+         *    startStrEnd offset, move it to adjust where startStr ends
+         *       midStrEnd offset
+         *           openMark 
+         *                     closeMark
+         *                                 closeMark offset, how far to the right will start search for closeMark, since there cen be overlap ( open *** and close ***)
+         *                                    openHTML
+         *                                                               closeHTML
          */
-        array(0, 3, -1, 0, "###",    "\n",       1, "<h5>",                    "</h5>"),                           // Heading 3
-        array(0, 2, -1, 0, "##",     "\n",       1, "<h4>",                    "</h4>"),                           // Heading 2
-        array(0, 1, -1, 0, "#",      "\n",       1, "<h3>",                    "</h3>"),                           // Heading 1
-        array(0, 3, -3, 3, "***",    "***",      1, "<strong><em>",            "</em></strong>"),                  // Bold and italic
-        array(0, 2, -2, 2, "**",     "**",       1, "<strong>",                "</strong>"),                       // Bold
-        array(0, 1, -1, 1, "*",      "*",        1, "<em>",                    "</em>"),                           // Italic
-        array(0, 0, 0, +3, "---",    "---",      0, "\r\n\r\n<hr>\r\n\r\n",    ""),                                // Horizontal rule
-        array(0, 0, 0, +2, "  ",     "  ",       0, "<br>\n",                  ""),                                // Line break
+        array(0, -1, "###",    "\n",       1, "<h5>",                    "</h5>"),                           // Heading 3
+        array(0, -1, "##",     "\n",       1, "<h4>",                    "</h4>"),                           // Heading 2
+        array(0, -1, "#",      "\n",       1, "<h3>",                    "</h3>"),                           // Heading 1
+        array(0, -3, "***",    "***",      1, "<strong><em>",            "</em></strong>"),                  // Bold and italic
+        array(0, -2, "**",     "**",       1, "<strong>",                "</strong>"),                       // Bold
+        array(0, -1, "*",      "*",        1, "<em>",                    "</em>"),                           // Italic
+        array(0,  0, "---",    "---",      0, "\r\n\r\n<hr>\r\n\r\n",    ""),                                // Horizontal rule
+        array(0,  0, "  ",     "  ",       0, "<br>\n",                  ""),                                // Line break
     );
 
 
@@ -67,9 +75,7 @@ class MarkDownToHtml{
                                      $pattern[3],
                                      $pattern[4],
                                      $pattern[5],
-                                     $pattern[6],
-                                     $pattern[7],
-                                     $pattern[8],);
+                                     $pattern[6],);
         }
 
         //Img
@@ -159,12 +165,12 @@ class MarkDownToHtml{
             substr($this->str, $suffixStrStart, strlen($this->str));
     }
 
-    private function findAndSubstitute(int $start_endOffset, int $mid_stratOffest, int $mid_endOffset, int $end_startOffset, 
+    private function findAndSubstitute(int $start_endOffset, int $mid_endOffset, 
                                        string $openMark, string $closeMark, int $closeMark_offset, 
                                        string $openHTML, string $closeHTML){
         
         do{
-            if( $this->markDownSubstitute($start_endOffset, $mid_stratOffest, $mid_endOffset, $end_startOffset, 
+            if( $this->markDownSubstitute($start_endOffset, $mid_endOffset, 
                                           $openMark, $closeMark, $closeMark_offset, 
                                           $openHTML, $closeHTML) ) 
             {
@@ -174,7 +180,7 @@ class MarkDownToHtml{
     }
 
 
-    private function markDownSubstitute(int $start_endOffset, int $mid_stratOffest, int $mid_endOffset, int $end_startOffset, 
+    private function markDownSubstitute(int $start_endOffset, int $mid_endOffset, 
                                 string $openMark, string $closeMark, int $closeMark_offset, 
                                 string $openHTML, string $closeHTML) {
         
@@ -184,9 +190,9 @@ class MarkDownToHtml{
         if( $i !== false && $j !== false ){
             $this->str = substr($this->str, 0, $i + $start_endOffset) . 
                          $openHTML . 
-                         substr($this->str, $i + $mid_stratOffest, $j - $i + $mid_endOffset) . 
+                         substr($this->str, $i + strlen($openMark), $j - $i + $mid_endOffset) . 
                          $closeHTML . 
-                         substr($this->str, $j + $end_startOffset, strlen($this->str) );
+                         substr($this->str, $j + strlen($openMark), strlen($this->str) );
             
             return 1;
         } else {
