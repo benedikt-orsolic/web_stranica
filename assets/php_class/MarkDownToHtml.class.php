@@ -14,11 +14,7 @@ class MarkDownToHtml{
     
     private string $str;
 
-    // new line char at index $j has to be left or paragraph wont be recognized later
-    private $substitutePattern = array(
-        //    $start_endOffset, $mid_stratOffest, $mid_endOffset, $end_startOffset, 
-                                        //   $openMark, $closeMark, $closeMark_offset, 
-                                        //   $openHTML, $closeHTML
+    private static $substitutePattern = array(
         /*    input:    startStr . openMark . midStr . closeMark . endStr
          *    output:   startStr . openHTML . midStr . closeHTML . endStr
          * 
@@ -41,7 +37,6 @@ class MarkDownToHtml{
         array(0,  0, "  ",     "  ",       0, "<br>\n",                  ""),                                // Line break
     );
 
-
     public function setStr( string $str ) {
         
         
@@ -55,19 +50,6 @@ class MarkDownToHtml{
     
     private function getWithMarkDownToHTML() {
         
-        //Lowest heading
-        // new line char at index $j has to be left or paragraph wont be recognised later
-        //$this->findAndSubstitute(0, 3, -1, 0, "###", "\n", 1, "<h5>", "</h5>");
-        
-
-        //Middle heading
-        // new line char at index $j has to be left or paragraph wont be recognised later
-        //$this->findAndSubstitute(0, 2, -1, 0, "##", "\n", 1, "<h4>", "</h4>");
-
-        //Highest heading
-        
-        //$this->findAndSubstitute(0, 1, -1, 0, "#", "\n", 1, "<h3>", "</h3>");
-
         foreach($this->substitutePattern as $pattern) {
             $this->findAndSubstitute($pattern[0],
                                      $pattern[1],
@@ -83,25 +65,6 @@ class MarkDownToHtml{
         
         //Link
         $this->findAndSubstituteBlock("");
-
-        //Bold and italic text
-        // new line char at index $j has to be left or paragraph wont be recognised later
-        //$this->findAndSubstitute(0, 3, -3, 3, "***", "***", 1, "<strong><em>", "</em></strong>");
-        
-        //Bold text
-        //$this->findAndSubstitute(0, 2, -2, 2, "**", "**", 1, "<strong>", "</strong>");
-
-        //Italic
-        //$this->findAndSubstitute(0, 1, -1, 1, "*", "*", 1, "<em>", "</em>");
-        
-        //Horizontal rule
-        // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
-        //$this->findAndSubstitute(0, 0, 0, +3, "---", "---", 0, "\r\n\r\n<hr>\r\n\r\n", "");
-
-        //Line break
-        // Add 2 new lines in front and back to help paragraph section detect it since firefox doesn't like it as <p> <hr> </p>
-        //$this->findAndSubstitute(0, 0, 0, +2, "  ", "  ", 0, "<br>\n", "");
-
 
         //TODO: Paragraphs not working
         // do{
