@@ -8,6 +8,11 @@
     max-width: 100%;
 }
 
+.blogEditorImgList {
+    max-height: 2em;
+    display: block;
+}
+
 #blogPostTitle {
     width: 100%;
     margin-bottom: 1vh;

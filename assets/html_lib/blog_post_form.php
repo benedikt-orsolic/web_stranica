@@ -11,6 +11,7 @@
         <input onclick="updatePost()" id="blogPostSubmitButton" name="submit" type="submit" value='Update post' style="float: right;"></button>
 
         <input onchange="uploadImage()" id="blogImageFileUpload" type="file" name="imageUpload"/>
+        <section id="blogEditorImgList"></section>
     </section>
 
     <section id="blogPreview">

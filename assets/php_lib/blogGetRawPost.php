@@ -16,6 +16,9 @@ if( !isset($_SESSION['uuid']) ) {
 $getRawBlog = new QuarryBlogPost();
 $post = $getRawBlog->getLastNPosts($_POST['upid'], 1)[0];
 
+$imgHandle = new BlogPostImgArray($_POST['upid']);
+$post['img'] = $imgHandle->getImgArray();
+
 if( !isset($post['upid'])) {
     http_response_code(404);
     echo('Post not found');

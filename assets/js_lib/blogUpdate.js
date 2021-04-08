@@ -57,6 +57,17 @@ function updatePostEditorWithRawData(rawPostFormData) {
     
     document.getElementById('blogPostTitle').value = rawPostFormData.title;
     document.getElementById('blogPostBody').value = rawPostFormData.text;
+    console.log(rawPostFormData.img[0])
+    addImgThumbNails(rawPostFormData.img);
+}
+
+
+
+function addImgThumbNails(imgList){
+    imgList.forEach(function( imgName) {
+        document.getElementById('blogEditorImgList').innerHTML +=
+            '<img class="blogEditorImgList" src="images/' + imgName + '">';
+    })
 }
 
 
