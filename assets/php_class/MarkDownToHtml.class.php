@@ -139,7 +139,7 @@ class MarkDownToHtml{
         $i = strpos($this->str, $openMark);
         $j = strpos($this->str, $closeMark, $i + $closeMarkOffset);
 
-        if( $i === false && $j === false ) return false;
+        if( $i === false || $j === false ) return false;
         
         $this->str = 
             substr($this->str, 0, $i + $startStrEndOffset) . 
