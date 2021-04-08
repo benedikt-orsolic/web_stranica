@@ -136,7 +136,7 @@ class MarkDownToHtml{
         $urlOpen = strpos($this->str, "(", $j);
         $urlClose = strpos($this->str, ")", $urlOpen + 1);
 
-        if( $urlOpen === false && $urlClose == false) return false;
+        if( $urlOpen === false && $urlClose === false) return false;
         $url = substr($this->str, $urlOpen + 1, $urlClose - $urlOpen - 1) ;
 
         $insert = $openMarkBlockPrefix === "" ? 
