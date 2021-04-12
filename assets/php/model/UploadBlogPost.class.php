@@ -1,11 +1,11 @@
 <?php
 
-class UploadBlogPost extends Dbh {
+class UploadBlogPost {
 
     public function uploadPost( $title, $body ) {
 
         $sql = 'INSERT INTO blog_posts (title, text) VALUES ( ?, ? );';
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
         $stmt->execute( [$title, $body] );
         
     }
