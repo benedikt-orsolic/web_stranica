@@ -1,5 +1,7 @@
 <?php
 
+require_once 'inc/session.inc.php';
+
 spl_autoload_register(function ($className){
 
     $extension = '.class.php';
