@@ -4,9 +4,6 @@ class FormatBlogPostOutput extends MarkDownToHtml {
 
     public function formatPost ( $posts ) {
 
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         if( isset($_SESSION['uuid'])) $uuid = $_SESSION['uuid'];
         else $uuid = null;
         ;
