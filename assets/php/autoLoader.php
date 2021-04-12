@@ -3,14 +3,11 @@
 spl_autoload_register(function ($className){
 
     $extension = '.class.php';
-    $pathFromRoot = 'assets/php/';
     $file = $className . $extension;
 
-    
-
-    $modelPath      = $pathFromRoot . 'model/';
-    $viewPath       = $pathFromRoot . 'view/';
-    $controllerPath = $pathFromRoot . 'controller/';
+    $modelPath      = __DIR__ . '/model/';
+    $viewPath       = __DIR__ . '/view/';
+    $controllerPath = __DIR__ . '/controller/';
 
     $model = $modelPath . $file;
     $view  = $viewPath . $file;
@@ -32,10 +29,8 @@ spl_autoload_register(function ($className){
     };
 
     // Old class path
-    $oldPath = 'assets/php_class/';
+    $oldPath = __DIR__ . '/../php_class/';
     $filePath = $oldPath . $file;
-
-    echo $filePath . '<br>';
 
     if(file_exists($filePath)){
         require_once $filePath;
