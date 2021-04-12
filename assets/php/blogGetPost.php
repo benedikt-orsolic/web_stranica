@@ -1,7 +1,6 @@
 <?php
 
-include_once 'auto_loader.inc.php';
-
+require_once 'autoLoader.php';
 
 if( !isset($_POST['submit']) ) {
     die();
