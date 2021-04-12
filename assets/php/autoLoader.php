@@ -10,10 +10,12 @@ spl_autoload_register(function ($className){
     $modelPath      = __DIR__ . '/model/';
     $viewPath       = __DIR__ . '/view/';
     $controllerPath = __DIR__ . '/controller/';
+    $adapterPath    = __DIR__ . '/adapter/';
 
     $model = $modelPath . $file;
     $view  = $viewPath . $file;
     $controller = $controllerPath . $file;
+    $adapter = $adapterPath . $file;
 
     if(file_exists($model)) {
         require_once $model;
@@ -29,6 +31,11 @@ spl_autoload_register(function ($className){
         require_once $controller;
         return;
     };
+
+    if(file_exists($adapter)) {
+        require_once $adapter;
+        return;
+    }
 
     // Old class path
     $oldPath = __DIR__ . '/../php_class/';
