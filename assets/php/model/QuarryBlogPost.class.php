@@ -9,9 +9,9 @@ class QuarryBlogPost extends Dbh {
         } else {
             $sql = "SELECT * FROM blog_posts WHERE upid = ?;";
         }
+    
 
-
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
         
         
         if( $currentPostID <= -1 ) {
