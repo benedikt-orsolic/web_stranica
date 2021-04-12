@@ -15,4 +15,4 @@ $posts = $postQuarry->getLastNPosts( $upid - 1, $limit);
 
 
 $blogPostFormatting = new FormatBlogPostOutput();
-$blogPostFormatting->formatPost( $posts );
+echo $blogPostFormatting->formatPost( $posts );
