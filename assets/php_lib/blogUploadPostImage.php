@@ -18,8 +18,8 @@ if( (!isset( $_FILES['imgUpload']) && $_FILES['imgUpload']['error'] === 0)  ||
 
 
 $quarryBlogPost = new QuarryBlogPost();
-$postRaw = $quarryBlogPost->getLastNPosts($_POST['upid'], 1);
-var_dump($postRaw);
+$postRaw = $quarryBlogPost->getLastNPosts($_POST['upid'], 1)[0];
+
 $postOwner = $postRaw['ownerId'];
 $postId = $postRaw['upid'];
 
