@@ -1,13 +1,13 @@
 <?php
 
-class QuarryUser extends Dbh {
+class QuarryUser {
     
     /* NULL for no user, anything else if found something */
     public function userExists( $userName ) {
         
 
         $sql = 'SELECT * FROM users WHERE username = ?;';
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
         $stmt->execute( [ $userName ] );
 
         $result = $stmt->fetch(); 
@@ -21,7 +21,7 @@ class QuarryUser extends Dbh {
     public function insertUser($userName, $password, $email) {
 
         $sql = "INSERT INTO users (email, username, password) VALUES (?, ?, ?);";
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
 
         $password = password_hash( $password, PASSWORD_DEFAULT );
 
