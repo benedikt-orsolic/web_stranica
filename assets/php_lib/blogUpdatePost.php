@@ -3,7 +3,6 @@
 
 
 include 'auto_loader.inc.php';
-session_start();
 
 isAllowedAccessPost();
 
