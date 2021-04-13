@@ -1,7 +1,6 @@
 <?php
 
 include 'auto_loader.inc.php';
-session_start();
 
 if( !isset($_POST['createPostInDB']) ) die();
 if( !isset($_SESSION['uuid'])) die();
