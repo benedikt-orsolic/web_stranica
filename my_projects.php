@@ -1,4 +1,5 @@
 <?php
+    include 'assets/php/autoLoader.php';
     session_start();
 ?>
 

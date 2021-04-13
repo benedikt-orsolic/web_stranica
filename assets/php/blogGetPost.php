@@ -1,7 +1,6 @@
 <?php
 
-include_once 'auto_loader.inc.php';
-
+require_once 'autoLoader.php';
 
 if( !isset($_POST['submit']) ) {
     die();
@@ -16,4 +15,4 @@ $posts = $postQuarry->getLastNPosts( $upid - 1, $limit);
 
 
 $blogPostFormatting = new FormatBlogPostOutput();
-$blogPostFormatting->formatPost( $posts );
+echo $blogPostFormatting->formatPost( $posts );

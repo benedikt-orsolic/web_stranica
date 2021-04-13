@@ -17,7 +17,7 @@ function getNextToLastPost( lastPostUPID ) {
         }
     };
 
-    xhttp.open('POST', 'assets/php_lib/get_blog_post.php', true);
+    xhttp.open('POST', 'assets/php/blogGetPost.php', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('submit=1&getBlogPost=1&limit=5&upid=' + lastPostUPID );
 }

@@ -1,7 +1,6 @@
 <?php
 
 include 'auto_loader.inc.php';
-session_start();
 
 if( !isset($_POST['upid']) ) {
     http_response_code(400);
