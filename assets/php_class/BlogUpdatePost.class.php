@@ -1,12 +1,12 @@
 <?php
 
-class BlogUpdatePost extends Dbh{
+class BlogUpdatePost {
 
     public function update(int $upid, string $title, string $text) {
 
         $sql = 'UPDATE blog_posts SET title=?, text=? WHERE upid = ?;';
 
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
 
         if( $stmt === false ) {
             http_response_code(500);
