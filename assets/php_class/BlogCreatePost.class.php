@@ -1,12 +1,12 @@
 <?php
 
-class BlogCreatePost extends Dbh{
+class BlogCreatePost {
 
     public function createPostInDB(int $owner) {
 
         $sql = 'INSERT INTO blog_posts (ownerId) VALUES ( ? );';
 
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
 
         if( $stmt === false ) {
             http_response_code(500);
@@ -24,7 +24,7 @@ class BlogCreatePost extends Dbh{
         
         $sql = 'SELECT upid FROM blog_posts WHERE ownerId = ? ORDER BY upid DESC LIMIT 1 ';
 
-        $stmt = $this->getConnection()->prepare( $sql );
+        $stmt = PDOSingleton::getInstance()->prepare( $sql );
 
         if( $stmt === false ) {
             http_response_code(500);
